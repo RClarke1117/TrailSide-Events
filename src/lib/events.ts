@@ -11,6 +11,7 @@ export interface PublicEvent {
   source: string;
   image?: string;
   imageAlt?: string;
+  images?: { src: string; alt: string }[];
 }
 
 export type EventTiming = 'upcoming' | 'past' | 'undated';
