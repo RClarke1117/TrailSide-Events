@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
 import InquiryForm from '../components/InquiryForm.astro';
+import ContentBreak from '../components/ContentBreak.astro';
 import { site } from '../lib/site';
 ---
 
@@ -17,8 +18,10 @@ import { site } from '../lib/site';
       </h1>
       <p class="lede">An open day is a request, not a booking. November and December show the remaining holiday and weekend dates. Weekdays are by request.</p>
     </header>
+    <ContentBreak />
     <div class="wrap">
       <AvailabilityCalendar />
+      <ContentBreak />
       <InquiryForm />
     </div>
   </article>

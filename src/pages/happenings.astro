@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import NextStep from '../components/NextStep.astro';
+import ContentBreak from '../components/ContentBreak.astro';
 import { formatEventWhen, listEvents } from '../lib/events';
 import { site } from '../lib/site';
 
@@ -17,6 +18,8 @@ const highlights = [...past, ...undated];
       <p class="eyebrow">Happenings</p>
       <h1>What the house is hosting in public.</h1>
     </header>
+
+    <ContentBreak />
 
     <div class="wrap">
       <section class="event-block">
@@ -60,7 +63,11 @@ const highlights = [...past, ...undated];
           )
         }
       </section>
+    </div>
 
+    <ContentBreak />
+
+    <div class="wrap">
       <section class="event-block">
         <p class="section-kicker">Past</p>
         <h2 class="section-title">Highlights already kept</h2>

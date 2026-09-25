@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PlaceholderFrame from '../components/PlaceholderFrame.astro';
 import NextStep from '../components/NextStep.astro';
+import ContentBreak from '../components/ContentBreak.astro';
 import gallery from '../../data/gallery.json';
 ---
 
@@ -17,6 +18,7 @@ import gallery from '../../data/gallery.json';
         The bar room, tables set for a gathering, those tables in a line, photo ops on the green wall, and the building at 201 North Main Lane.
       </p>
     </header>
+    <ContentBreak />
     <div class="wrap gallery-grid">
       {
         gallery.frames.map((frame) => (
