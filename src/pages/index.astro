@@ -107,26 +107,25 @@ import reviewsFile from '../../data/reviews.json';
         <p class="section-kicker">Gallery</p>
         <h2 class="section-title">The room, as it is set.</h2>
       </div>
-      <p class="section-copy" data-reveal>
-        The bar, a long banquet, tables dressed for a gathering, and the green wall with the Lehigh stove.
-      </p>
     </div>
-    <div class="wrap gallery-grid">
+    <div class="wrap gallery-grid home-frames">
       {
-        gallery.frames.slice(0, 5).map((frame) => (
-          <PlaceholderFrame
-            className={frame.layout}
-            title={frame.title}
-            texture={frame.texture}
-            image={frame.image}
-            alt={frame.alt}
-            credit={frame.credit}
-          />
-        ))
+        gallery.frames
+          .filter((frame) => frame.id === 'main-room' || frame.id === 'dining')
+          .map((frame) => (
+            <PlaceholderFrame
+              className={frame.id === 'main-room' ? 'frame-a' : 'frame-b'}
+              title={frame.id === 'main-room' ? 'The bar room' : 'Set for a gathering'}
+              texture={frame.texture}
+              image={frame.image}
+              alt={frame.alt}
+              captionOnly={true}
+            />
+          ))
       }
     </div>
     <div class="wrap">
-      <NextStep title="See the rest of the house." copy="The gallery also holds the performance wall and the building on North Main Lane." href="/gallery" label="Open the gallery" />
+      <NextStep title="The rest of the house." copy="More of the room, the long table, and the building on North Main Lane." href="/gallery" label="Open the gallery" />
     </div>
   </section>
 
@@ -152,16 +151,12 @@ import reviewsFile from '../../data/reviews.json';
     <div class="wrap section-head">
       <div data-reveal>
         <p class="section-kicker">In their words</p>
-        <h2 class="section-title">Nine recommendations, unedited.</h2>
+        <h2 class="section-title">Recommendations, unedited.</h2>
       </div>
-      <p class="section-copy" data-reveal>
-        First names only. A tenth review is counted in the Facebook total and was not visible on the public page, so it is not quoted here.
-        <a href={reviewsFile.reviewsUrl}>Read them on Facebook.</a>
-      </p>
     </div>
     <div class="wrap review-grid">
       {
-        reviewsFile.reviews.map((review) => (
+        reviewsFile.reviews.slice(0, 3).map((review) => (
           <blockquote class="review" data-reveal>
             <p>{review.quote}</p>
             <footer>{review.occasion ? `${review.name}, ${review.occasion}` : review.name}</footer>
@@ -169,15 +164,28 @@ import reviewsFile from '../../data/reviews.json';
         ))
       }
     </div>
+    <details class="wrap review-more">
+      <summary>See more</summary>
+      <div class="review-grid">
+        {
+          reviewsFile.reviews.slice(3).map((review) => (
+            <blockquote class="review">
+              <p>{review.quote}</p>
+              <footer>{review.occasion ? `${review.name}, ${review.occasion}` : review.name}</footer>
+            </blockquote>
+          ))
+        }
+      </div>
+    </details>
   </section>
 
   <section class="section">
     <div class="wrap">
       <NextStep
-        title="See which days are open."
-        copy="The calendar is a sample until the owners connect real bookings. An open day starts an inquiry. It does not book the house."
+        title="See which days are next."
+        copy="Call or send an inquiry. An open day is a request, not a booking."
         href="/availability"
-        label="Check a date"
+        label="Availability and booking"
       />
     </div>
   </section>

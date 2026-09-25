@@ -556,8 +556,20 @@ main {
 }
 
 .band {
+  position: relative;
   background: var(--forest);
   color: var(--cream);
+}
+
+.band::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -5rem;
+  height: 5rem;
+  background: linear-gradient(180deg, rgba(22, 38, 31, 0) 0%, var(--forest) 100%);
+  pointer-events: none;
 }
 
 .band a {
@@ -648,6 +660,13 @@ main {
   gap: 1rem;
   align-items: baseline;
   font-size: 0.92rem;
+}
+
+.home-frames .frame figcaption strong {
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 550;
 }
 
 .frame figcaption span {
@@ -1072,6 +1091,23 @@ a.day:hover {
   gap: 1rem;
 }
 
+.review-more {
+  margin-top: 1rem;
+}
+
+.review-more summary {
+  cursor: pointer;
+  width: fit-content;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  padding: 0.7rem 0;
+}
+
+.review-more .review-grid {
+  margin-top: 0.5rem;
+}
+
 .review {
   margin: 0;
   padding: 1.25rem 1.2rem 1.1rem;
@@ -1222,9 +1258,12 @@ a.day:hover {
 }
 
 .footer-logo img {
-  width: 7.5rem;
-  height: 7.5rem;
+  width: 5.5rem;
+  height: 5.5rem;
   object-fit: contain;
+  background: var(--cream);
+  border-radius: 50%;
+  padding: 0.35rem;
 }
 
 .site-footer ul {

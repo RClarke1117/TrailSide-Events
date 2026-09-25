@@ -6,9 +6,10 @@ interface Props {
   image?: string;
   alt?: string;
   credit?: string;
+  captionOnly?: boolean;
 }
 
-const { title, texture, className = '', image = '', alt = '', credit = '' } = Astro.props;
+const { title, texture, className = '', image = '', alt = '', credit = '', captionOnly = false } = Astro.props;
 const photo = image.trim();
 ---
 
@@ -25,9 +26,8 @@ const photo = image.trim();
   </div>
   <figcaption>
     <strong>{title}</strong>
-    <span>{photo ? credit || 'Venue' : 'Venue photo coming'}</span>
+    {!captionOnly && <span>{photo ? credit || 'Venue' : 'Venue photo coming'}</span>}
   </figcaption>
-  {credit && <p class="frame-credit">{credit}</p>}
 </figure>
 
 <style>
