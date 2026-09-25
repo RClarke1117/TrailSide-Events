@@ -393,6 +393,15 @@ main {
   max-width: 14ch;
 }
 
+.mast h1.mast-plain {
+  font-family: var(--sans);
+  font-size: clamp(1.7rem, 3.4vw, 2.35rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  max-width: 22em;
+}
+
 .mast h1 em,
 .section-title em {
   font-style: italic;

@@ -2,19 +2,20 @@
 import Base from '../layouts/Base.astro';
 import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
 import NextStep from '../components/NextStep.astro';
+import { site } from '../lib/site';
 ---
 
 <Base
   title="Availability"
-  description="See which days at TrailSide Events PA look open. The calendar is a sample. Jordan and Brandon confirm every date."
+  description="To reserve a date at TrailSide Events PA, call or send an inquiry. An open day is a request, not a booking."
 >
   <article class="page">
     <header class="wrap mast">
       <p class="eyebrow">Availability</p>
-      <h1>See a day. Ask the house for it.</h1>
-      <p class="lede">
-        This calendar is display-only. To reserve a date, call (610) 810-2982 or send an inquiry. Jordan and Brandon confirm every date. An open day is a request, not a booking.
-      </p>
+      <h1 class="mast-plain">
+        To reserve a date, call <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a> or <a href="/inquire">send an inquiry</a>.
+      </h1>
+      <p class="lede">An open day is a request, not a booking.</p>
     </header>
     <div class="wrap">
       <AvailabilityCalendar />
