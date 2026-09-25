@@ -1261,9 +1261,7 @@ a.day:hover {
   width: 5.5rem;
   height: 5.5rem;
   object-fit: contain;
-  background: var(--cream);
-  border-radius: 50%;
-  padding: 0.35rem;
+  background: transparent;
 }
 
 .site-footer ul {
