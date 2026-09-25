@@ -137,10 +137,9 @@ textarea {
 }
 
 .brand img {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 3.4rem;
+  height: 3.4rem;
+  object-fit: contain;
   background: transparent;
 }
 
@@ -1205,6 +1204,18 @@ a.day:hover {
 .site-footer p,
 .site-footer li {
   color: rgba(244, 236, 227, 0.8);
+}
+
+.footer-logo {
+  display: inline-block;
+  margin-top: 0.35rem;
+  text-decoration: none;
+}
+
+.footer-logo img {
+  width: 7.5rem;
+  height: 7.5rem;
+  object-fit: contain;
 }
 
 .site-footer ul {
