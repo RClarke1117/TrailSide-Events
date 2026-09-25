@@ -11,7 +11,9 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 <header class="site-header" data-header data-overlay={overlay ? 'true' : 'false'}>
   <div class="header-inner">
-    <a class="wordmark" href="/" transition:name="wordmark">Trail<span>Side</span></a>
+    <a class="brand" href="/" transition:name="wordmark" aria-label="TrailSide Events, home">
+      <img src="/brand/logo.jpg" alt="" width="48" height="48" />
+    </a>
     <nav class="nav-desktop" aria-label="Primary">
       {
         nav.map((item) => (

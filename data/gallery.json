@@ -60,9 +60,9 @@
       "title": "North Main Lane",
       "layout": "frame-g",
       "texture": "texture-lane",
-      "image": "",
-      "alt": "",
-      "credit": "Generic texture, not a photograph of TrailSide."
+      "image": "/media/house-exterior.jpg",
+      "alt": "The TrailSide building at 201 North Main Lane, Lehighton, seen from the street.",
+      "credit": "Terry Ahner / Times News"
     },
     {
       "id": "trail",

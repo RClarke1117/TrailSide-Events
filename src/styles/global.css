@@ -129,20 +129,19 @@ textarea {
   gap: 1rem;
 }
 
-.wordmark {
-  font-family: var(--serif);
-  font-weight: 560;
-  font-size: 1.55rem;
-  letter-spacing: -0.03em;
+.brand {
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  line-height: 1;
-  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 72, "wght" 560;
+  flex: 0 0 auto;
 }
 
-.wordmark span {
-  font-weight: 450;
-  font-style: italic;
-  font-variation-settings: "SOFT" 70, "WONK" 1, "opsz" 72, "wght" 450;
+.brand img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #111;
 }
 
 .nav-desktop {
@@ -219,21 +218,33 @@ textarea {
 .hero {
   min-height: 100vh;
   min-height: 100dvh;
-  background: var(--forest);
+  background: #14110f;
   color: var(--cream);
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
   position: relative;
   overflow: hidden;
+  display: block;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
 }
 
 .hero-copy {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  min-height: 100vh;
+  min-height: 100dvh;
   padding: calc(var(--header-h) + 2rem) 6vw 4.5rem;
   position: relative;
   z-index: 1;
+  background: linear-gradient(90deg, rgba(16, 12, 10, 0.82) 0%, rgba(16, 12, 10, 0.55) 42%, rgba(16, 12, 10, 0.12) 72%, rgba(16, 12, 10, 0.28) 100%);
+  max-width: none;
 }
 
 .eyebrow {
@@ -1252,12 +1263,9 @@ a.day:hover {
     grid-template-columns: 1fr 1fr;
   }
 
-  .scene svg {
-    min-height: 52vh;
-  }
-
   .hero-copy {
     padding-bottom: 2.5rem;
+    background: linear-gradient(180deg, rgba(16, 12, 10, 0.2) 0%, rgba(16, 12, 10, 0.28) 38%, rgba(16, 12, 10, 0.82) 100%);
   }
 }
 
@@ -1282,17 +1290,23 @@ a.day:hover {
   }
 
   .nav-panel.is-open {
+    display: block;
+  }
+
+  .nav-panel nav {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    align-items: stretch;
   }
 
   .nav-panel a {
+    display: block;
     text-decoration: none;
     padding: 0.85rem 0;
     border-bottom: 1px solid var(--line);
-    font-size: 1.35rem;
+    font-size: 1.7rem;
     font-family: var(--serif);
+    line-height: 1.2;
   }
 
   .nav-panel .btn {

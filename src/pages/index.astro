@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import HouseScene from '../components/HouseScene.astro';
 import PlaceholderFrame from '../components/PlaceholderFrame.astro';
 import NextStep from '../components/NextStep.astro';
 import { site } from '../lib/site';
@@ -10,6 +9,11 @@ import reviewsFile from '../../data/reviews.json';
 
 <Base title={site.shortName} overlay={true}>
   <section class="hero">
+    <img
+      class="hero-photo"
+      src="/media/house-exterior.jpg"
+      alt="The TrailSide building at 201 North Main Lane, Lehighton."
+    />
     <div class="hero-copy">
       <p class="eyebrow" data-load="1">Lehighton, Pennsylvania · Spring 2024</p>
       <h1 data-load="2">
@@ -27,9 +31,9 @@ import reviewsFile from '../../data/reviews.json';
         <span>2025 Business of the Year</span>
         <span>Carbon County Chamber</span>
         <span>Intimate weddings &amp; gatherings</span>
+        <span>Photograph: Terry Ahner / Times News</span>
       </div>
     </div>
-    <HouseScene />
   </section>
 
   <section class="section">
