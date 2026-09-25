@@ -49,7 +49,7 @@ A later admin calendar can sit on a Cloudflare Worker, D1, or KV without changin
 
 ## Typography
 
-Display type is Fraunces. Interface and body type is Schibsted Grotesk. The pairing is explained in [docs/typography.md](docs/typography.md).
+Display type is Newsreader. Interface and body type is Outfit. The pairing is explained in [docs/typography.md](docs/typography.md).
 
 ## What is real, and what is not
 

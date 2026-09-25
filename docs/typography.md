@@ -1,25 +1,25 @@
 # Typography
 
-TrailSide’s type has to feel like a kept historic building and a working modern house at the same time: timber and brick, not a banquet-hall template.
+TrailSide’s type should feel like a kept historic building: timber, brick, and a set table. The headlines are a book serif. The interface is a plain geometric sans.
 
-## Display: Fraunces
+## Display: Newsreader
 
-Fraunces is a variable old-style serif (designed by Undercase Type, published by Google Fonts) with optical size, a softness axis, and a “wonk” axis. At display sizes the serifs are sharp and the contrast is high, which reads as engraved signage. A little softness and wonk keep the wordmark from feeling like a fashion magazine borrowed for a wedding. The italic is used for the emotional half of a headline — “on the D&L”, “waiting for photographs” — so the name can stay upright and sturdy.
+Newsreader is a variable old-style serif (Production Type) with an optical-size axis. At display sizes the contrast is high and the italic is quiet, closer to an invitation than a novelty wordmark. It carries the wordmark, page titles, quotes, and the calendar month.
 
-Loaded locally via `@fontsource-variable/fraunces` (`full` and `full-italic`), so the page does not depend on a third-party font host.
+Loaded locally via `@fontsource-variable/newsreader` (`opsz` and `opsz-italic`). Optical size stays inside Newsreader’s 6–72 range. The softness and wonk axes from the previous display face are not used.
 
-## Text and UI: Schibsted Grotesk
+## Text and UI: Outfit
 
-Schibsted Grotesk is a contemporary grotesque with open apertures and a slightly industrial rhythm. It carries navigation, forms, captions, and body copy. Next to Fraunces it is the “modern amenities” voice: clear at small sizes, not decorative, and not a default UI face.
+Outfit is a geometric sans with an even rhythm. It is the same UI face used on Milk Street Distillery. It carries navigation, forms, captions, and body copy, and it stays clear at small sizes.
 
-Loaded locally via `@fontsource-variable/schibsted-grotesk`.
+Loaded locally via `@fontsource-variable/outfit`.
 
 ## What was rejected
 
-Inter, Jost, Syne, and `system-ui` are out. They are the generic defaults of product UI and do not signal a Lehighton mill building. System fonts appear only as the CSS generic families `serif` and `sans-serif` behind the real faces, so a failed font file still leaves readable type.
+Fraunces with softness and wonk made the headlines look bubbly. Schibsted Grotesk fought that display face instead of settling next to the photographs. Inter, Jost, Syne, and `system-ui` stay out. System fonts appear only as the CSS generic families `serif` and `sans-serif` behind the real faces, so a failed font file still leaves readable type.
 
 ## Use
 
-- Fraunces for the wordmark, page titles, quotes, and calendar month.
-- Schibsted Grotesk for everything a guest scans or fills in.
+- Newsreader for the wordmark, page titles, quotes, and calendar month.
+- Outfit for everything a guest scans or fills in.
 - Uppercase tracking is reserved for eyebrows, captions, and the photograph label. It is not used for long text.

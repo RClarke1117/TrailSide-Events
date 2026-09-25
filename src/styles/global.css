@@ -16,8 +16,8 @@
   --open: #1f6a45;
   --booked: #7a382c;
   --hold: #8d5a16;
-  --serif: "Fraunces Variable", serif;
-  --sans: "Schibsted Grotesk Variable", sans-serif;
+  --serif: "Newsreader Variable", serif;
+  --sans: "Outfit Variable", sans-serif;
   --header-h: 4.75rem;
   --wrap: 1120px;
   --gutter: 1.5rem;
@@ -262,7 +262,7 @@ textarea {
   font-size: clamp(4.6rem, 11vw, 8.5rem);
   line-height: 0.84;
   letter-spacing: -0.045em;
-  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 144, "wght" 560;
+  font-variation-settings: "opsz" 72, "wght" 560;
 }
 
 .hero h1 em {
@@ -272,7 +272,7 @@ textarea {
   font-size: 0.62em;
   letter-spacing: -0.03em;
   color: #f0d7b4;
-  font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 144, "wght" 450;
+  font-variation-settings: "opsz" 72, "wght" 480;
 }
 
 .deck {
@@ -370,7 +370,7 @@ main {
   font-weight: 550;
   letter-spacing: -0.035em;
   line-height: 0.98;
-  font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 96, "wght" 550;
+  font-variation-settings: "opsz" 72, "wght" 550;
   margin: 0;
 }
 
@@ -383,7 +383,7 @@ main {
 .section-title em {
   font-style: italic;
   font-weight: 460;
-  font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 96, "wght" 460;
+  font-variation-settings: "opsz" 72, "wght" 480;
 }
 
 .lede {
@@ -468,7 +468,7 @@ main {
   font-size: 1.45rem;
   font-weight: 520;
   letter-spacing: -0.02em;
-  font-variation-settings: "SOFT" 40, "opsz" 48, "wght" 520;
+  font-variation-settings: "opsz" 36, "wght" 520;
 }
 
 .chapter-list p {
@@ -499,7 +499,7 @@ main {
   font-weight: 520;
   letter-spacing: -0.03em;
   line-height: 1.05;
-  font-variation-settings: "SOFT" 40, "opsz" 60, "wght" 520;
+  font-variation-settings: "opsz" 48, "wght" 520;
 }
 
 .card p {
@@ -525,7 +525,7 @@ main {
   font-style: italic;
   line-height: 1.25;
   letter-spacing: -0.03em;
-  font-variation-settings: "SOFT" 70, "WONK" 1, "opsz" 72, "wght" 480;
+  font-variation-settings: "opsz" 48, "wght" 480;
 }
 
 .quote footer {
@@ -558,7 +558,7 @@ main {
   line-height: 0.85;
   letter-spacing: -0.04em;
   margin: 0;
-  font-variation-settings: "SOFT" 20, "opsz" 144, "wght" 520;
+  font-variation-settings: "opsz" 72, "wght" 520;
 }
 
 .stat small {
@@ -1067,7 +1067,7 @@ a.day:hover {
   font-size: 1.15rem;
   line-height: 1.4;
   letter-spacing: -0.02em;
-  font-variation-settings: "SOFT" 50, "opsz" 36, "wght" 460;
+  font-variation-settings: "opsz" 24, "wght" 460;
 }
 
 .review footer {
