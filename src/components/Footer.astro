@@ -17,9 +17,14 @@ import { site } from '../lib/site';
       <ul>
         <li><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a></li>
         <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
-        <li>
-          <a class="footer-logo" href={site.facebook} aria-label="TrailSide Events on Facebook">
-            <img src="/brand/logo.png?v=7" alt="" width="220" height="220" />
+        <li class="footer-marks">
+          <a class="footer-logo" href="/" aria-label="TrailSide Events, home">
+            <img src="/brand/logo.png?v=8" alt="" width="220" height="220" />
+          </a>
+          <a class="facebook-mark" href={site.facebook} aria-label="TrailSide Events on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M15.1 8.5V6.6c0-.6.4-.8.9-.8H17V3.4h-2.3C12.2 3.4 11 4.8 11 7v1.5H9v2.7h2V21h3.2v-9.8h2.2l.4-2.7h-2.7z" />
+            </svg>
           </a>
         </li>
         <li><a href="/availability">Availability and booking</a></li>
