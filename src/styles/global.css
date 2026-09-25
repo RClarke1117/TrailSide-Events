@@ -1317,28 +1317,16 @@ a.day:hover {
   color: rgba(244, 236, 227, 0.8);
 }
 
-.facebook-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-weight: 560;
-  text-decoration: none;
-}
-
-.facebook-link svg {
-  display: block;
-}
-
 .footer-logo {
   display: inline-block;
-  margin-top: 0.35rem;
+  margin-top: 0.6rem;
   text-decoration: none;
 }
 
 .footer-logo img {
   width: auto;
-  height: 6.5rem;
-  max-width: 7rem;
+  height: 11rem;
+  max-width: 12rem;
   object-fit: contain;
   background: transparent;
 }
