@@ -42,7 +42,7 @@ export const nav = [
   { href: '/gatherings', label: 'Gatherings' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/happenings', label: 'Happenings' },
-  { href: '/availability', label: 'Availability' },
+  { href: '/availability', label: 'Availability and booking' },
 ] as const;
 
 export const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT?.trim() || '';

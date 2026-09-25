@@ -20,11 +20,11 @@ Pages: Home, The House, Gatherings, Gallery, Happenings, Availability, Inquire, 
 - The calendar is only on `/availability`. Inquire keeps the form and a Check availability link.
 - An open day is a link to `/inquire?date=YYYY-MM-DD`. Opening that URL set Preferred date to `2026-09-28`. The inquire page does not render the calendar.
 - `trailsidepa@gmail.com` is visible on the inquiry form.
-- At 768 and 390 the header collapses to Menu. Opening it shows The House, Gatherings, Gallery, Happenings, and Check a date on a cream panel (`aria-expanded` becomes true).
+- At 768 and 390 the header collapses to Menu. Opening it shows The House, Gatherings, Gallery, Happenings, and Availability and booking on a cream panel (`aria-expanded` becomes true). There is no separate Check a date control in the menu.
 
 ## Availability page
 
-The month grid, sample note, holiday note, legend, and display-only copy live on `/availability`. Availability is in the desktop and mobile navigation. The home Check a date button points there. No horizontal overflow at 1280, 768, or 390, and the header still fits at 1040.
+The month grid, sample note, holiday note, legend, and display-only copy live on `/availability`. The menu label is Availability and booking. The home hero still offers Check a date, which goes to that page. No horizontal overflow at 1280, 768, or 390.
 
 ## Facebook content pass
 
