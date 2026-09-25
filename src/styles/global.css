@@ -251,9 +251,11 @@ textarea {
 
 .hero-photo {
   position: absolute;
-  inset: -4%;
-  width: 108%;
-  height: 108%;
+  top: -8%;
+  left: -8%;
+  width: 116%;
+  height: 116%;
+  max-width: none;
   object-fit: cover;
   object-position: center 45%;
   border: 0;
