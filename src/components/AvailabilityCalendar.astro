@@ -153,25 +153,42 @@ const payload = JSON.stringify({ month, records, source: meta.source });
     const today = todayInLehighton();
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const paint = () => {
+    if (root.dataset.bound === 'true') return;
+    root.dataset.bound = 'true';
+
+    const paint = (direction?: 'next' | 'prev') => {
       heading.textContent = monthLabel(month);
       root.innerHTML = renderGrid(month, records, '', today);
+      const grid = root.querySelector('.calendar-grid');
+      if (!reduce && direction && grid) {
+        grid.classList.add(direction === 'next' ? 'is-enter-next' : 'is-enter-prev');
+      }
     };
 
     paint();
 
+    let busy = false;
     document.querySelectorAll('[data-month-nav]').forEach((button) => {
       button.addEventListener('click', async () => {
-        const delta = Number((button as HTMLElement).dataset.monthNav);
-        month = shiftMonth(month, delta);
-        records = await getAvailability(month);
-        if (!reduce) {
-          root.classList.remove('is-switching');
-          void root.offsetWidth;
-          root.classList.add('is-switching');
+        if (busy) return;
+        busy = true;
+        try {
+          const delta = Number((button as HTMLElement).dataset.monthNav);
+          const direction = delta > 0 ? 'next' : 'prev';
+          const nextMonth = shiftMonth(month, delta);
+          const nextRecords = await getAvailability(nextMonth);
+          const grid = root.querySelector('.calendar-grid');
+          if (!reduce && grid) {
+            grid.classList.add(direction === 'next' ? 'is-leave-next' : 'is-leave-prev');
+            await new Promise((resolve) => window.setTimeout(resolve, 280));
+          }
+          month = nextMonth;
+          records = nextRecords;
+          paint(reduce ? undefined : direction);
+          if (live) live.textContent = monthLabel(month);
+        } finally {
+          busy = false;
         }
-        paint();
-        if (live) live.textContent = monthLabel(month);
       });
     });
   }

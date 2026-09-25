@@ -62,6 +62,10 @@ const jsonLd = {
       <slot />
     </main>
     <Footer />
+    <nav class="reach-bar" data-reach aria-label="Reserve" aria-hidden="true" inert>
+      <a href="/availability">Check a date</a>
+      <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+    </nav>
     <dialog class="viewer" data-viewer aria-label="Photograph">
       <button type="button" class="viewer-close" data-viewer-close aria-label="Close">
         <svg viewBox="0 0 64 72" aria-hidden="true">
@@ -126,6 +130,21 @@ const jsonLd = {
         const hero = document.querySelector('.hero');
         const threshold = hero ? hero.offsetHeight - header.offsetHeight : 12;
         header.classList.toggle('is-solid', !overlay || window.scrollY > threshold);
+      }
+
+      function syncReach() {
+        const bar = document.querySelector('[data-reach]');
+        if (!(bar instanceof HTMLElement)) return;
+        const header = document.querySelector('[data-header]');
+        const hero = document.querySelector('.hero');
+        const headerHeight = header instanceof HTMLElement ? header.offsetHeight : 12;
+        const threshold = hero instanceof HTMLElement ? hero.offsetHeight - headerHeight : headerHeight;
+        const mobile = window.matchMedia('(max-width: 760px)').matches;
+        const on = mobile && window.scrollY > threshold;
+        bar.classList.toggle('is-on', on);
+        bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+        bar.toggleAttribute('inert', !on);
+        document.body.classList.toggle('has-reach', on);
       }
 
       function initTrail() {
@@ -267,12 +286,14 @@ const jsonLd = {
           () => {
             syncHeader();
             placeTrails();
+            syncReach();
           },
           { passive: true },
         );
         window.addEventListener('resize', () => {
           syncHeader();
           placeTrails();
+          syncReach();
         });
         window.__trailsideHeader = true;
       }
@@ -280,6 +301,7 @@ const jsonLd = {
       document.addEventListener('astro:page-load', () => {
         initMotion();
         syncHeader();
+        syncReach();
         initTrail();
         initPrices();
         initViewer();

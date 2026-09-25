@@ -76,7 +76,8 @@ import { eventTypes, formEndpoint, site } from '../lib/site';
     const typeInput = form.querySelector('[name="event_type"]');
     if (date && dateInput instanceof HTMLInputElement && !dateInput.value) dateInput.value = date;
     if (type && typeInput instanceof HTMLSelectElement) typeInput.value = type;
-    if (params.get('sent') === '1' && status) {
+    if (params.get('sent') === '1' && status instanceof HTMLElement) {
+      status.classList.add('is-sent');
       status.textContent = 'Sent. Jordan and Brandon will reply at the email you gave.';
     }
 
@@ -88,8 +89,8 @@ import { eventTypes, formEndpoint, site } from '../lib/site';
 
       const endpoint = form.dataset.endpoint || '';
       if (!endpoint) return;
-      if (status) {
-        status.classList.remove('is-error');
+      if (status instanceof HTMLElement) {
+        status.classList.remove('is-error', 'is-sent');
         status.textContent = 'Sending…';
       }
 
@@ -118,7 +119,7 @@ import { eventTypes, formEndpoint, site } from '../lib/site';
         const result = await response.json().catch(() => null);
         const message = String(result?.message || '');
         if (/activat/i.test(message)) {
-          if (status) {
+          if (status instanceof HTMLElement) {
             status.classList.add('is-error');
             status.textContent = `Almost. Open the one-time activation email at ${site.email}, confirm it, and submit this form again.`;
           }
@@ -128,9 +129,13 @@ import { eventTypes, formEndpoint, site } from '../lib/site';
           throw new Error(message || 'Request failed');
         }
         form.reset();
-        if (status) status.textContent = 'Sent. Jordan and Brandon will reply at the email you gave.';
+        if (status instanceof HTMLElement) {
+          status.classList.add('is-sent');
+          status.textContent = 'Sent. Jordan and Brandon will reply at the email you gave.';
+        }
       } catch {
-        if (status) {
+        if (status instanceof HTMLElement) {
+          status.classList.remove('is-sent');
           status.classList.add('is-error');
           status.textContent = `This did not send. Call ${site.phoneDisplay} or email ${site.email}.`;
         }
