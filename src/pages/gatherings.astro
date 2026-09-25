@@ -4,44 +4,44 @@ import NextStep from '../components/NextStep.astro';
 
 const gatherings = [
   {
-    title: 'Intimate weddings',
-    type: 'intimate-wedding',
-    copy: 'A house for a smaller wedding. Pricing, timing, and how many guests the day can hold are confirmed by Jordan and Brandon — they are not listed here.',
+    title: 'Weddings & receptions',
+    type: 'wedding-reception',
+    copy: 'Couples have held the reception here, and one hosted the rehearsal dinner the day before. Guests describe natural industrial beauty, with little décor beyond centerpieces. The tone they use is budget-friendly. No rates are listed.',
   },
   {
-    title: 'Bridal showers',
-    type: 'bridal-shower',
-    copy: 'One of the occasions Jordan named when the house opened.',
+    title: 'Rehearsal dinners',
+    type: 'rehearsal-dinner',
+    copy: 'The same room the night before a wedding. One party was catered by Cindy’s Deli. Catering choices are confirmed with Jordan.',
   },
   {
-    title: 'Baby showers',
-    type: 'baby-shower',
-    copy: 'The same room, set for a shower. Ask about tables, chairs, and coffee service in your inquiry.',
+    title: 'Reunions',
+    type: 'reunion',
+    copy: 'A 10-year high school reunion used the house. Guests called it spacious and easy to reach. How many people fit is confirmed when you inquire.',
   },
   {
-    title: 'Birthday celebrations',
+    title: 'Showers',
+    type: 'shower',
+    copy: 'Bridal and baby showers were part of the opening description, and the room is the one reviewers call easy to personalize.',
+  },
+  {
+    title: 'Birthdays',
     type: 'birthday',
-    copy: 'Private birthday gatherings were part of the opening description of the venue.',
+    copy: 'Birthday celebrations have been part of the house since it opened. Packages are available. Ask Jordan what is included.',
   },
   {
-    title: 'Private parties',
-    type: 'private-party',
-    copy: 'A rented evening or afternoon. You bring the shape of the party; the owners confirm the date.',
-  },
-  {
-    title: 'Performances',
-    type: 'performance',
-    copy: 'TrailSide opened as a performance venue as well as an event house. Public performance dates are listed only when they have been announced.',
+    title: 'Holiday & corporate parties',
+    type: 'holiday-party',
+    copy: 'TrailSide has invited holiday parties into the remaining November and December dates. Corporate gatherings use the same room: full-length bar, large gathering areas, owners hands-on.',
   },
   {
     title: 'Community events',
     type: 'community',
-    copy: 'At opening, the owners planned their own events and gatherings with other local businesses. Upcoming public dates live on the happenings page when they are known.',
+    copy: 'Public days have included a sports card and memorabilia sale and a 4th of July with food, live music, and fireworks. Those dates are on Happenings.',
   },
   {
-    title: 'Conferences & meetings',
-    type: 'conference',
-    copy: 'Jordan included conferences among the ways the room can be used. Hours and setup are arranged per inquiry.',
+    title: 'Live music',
+    type: 'performance',
+    copy: 'The 7th & Mahoning duo has played here. Performance dates are listed only when a start time is published.',
   },
 ];
 ---
@@ -55,7 +55,7 @@ const gatherings = [
       <p class="eyebrow">Gatherings</p>
       <h1>What the house is asked to hold.</h1>
       <p class="lede">
-        Bring your own food, drinks, and supplies, or engage one of the venue’s trusted local caterers. The facility has tables and chairs, a refrigerator and freezer, buffet chafing dishes, and a coffee maker with carafes. Those amenities were described by Jordan Cummins in May 2024. Prices, packages, and guest limits are not published until the owners set them.
+        A newly renovated, industrial-rustic room in the former distillery, with a full-length bar and large gathering areas. Reviewers say it is easily personalized and needs little décor. Packages are available, and the owners are hands-on — Jordan is the main contact. Bring your own food, drinks, and supplies, or ask about a local caterer. Tables, chairs, a refrigerator and freezer, chafing dishes, and coffee service were described by Jordan in May 2024. By appointment, contact us for tours and packages. No prices are published. The tone from a wedding review is budget-friendly, without a number attached.
       </p>
     </header>
 
@@ -82,8 +82,8 @@ const gatherings = [
           <p>Tables, chairs, refrigerator/freezer, chafing dishes, coffee maker and carafes. Anything beyond that list should be asked about.</p>
         </div>
         <div class="fact" data-reveal>
-          <h3>Not listed</h3>
-          <p>Hours, rates, and capacity are placeholders until Jordan and Brandon publish them. Inquire or call (610) 810-2982.</p>
+          <h3>Hours &amp; packages</h3>
+          <p>By appointment, contact us for tours and packages. Jordan is the main contact at (610) 810-2982 or trailsidepa@gmail.com.</p>
         </div>
       </div>
       <NextStep title="Match a gathering to a day." copy="Pick an open sample date or send the date you hope for. The owners confirm it." href="/inquire#calendar" label="Check a date" />

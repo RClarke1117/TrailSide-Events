@@ -52,6 +52,15 @@ const payload = JSON.stringify({ month, records, source: meta.source });
     <p class="reserve-note">
       To reserve a date, call <a href="tel:+16108102982">(610) 810-2982</a> or submit an inquiry. Jordan and Brandon confirm every date. Choosing an open day only fills the inquiry form — nothing is held or charged.
     </p>
+    {
+      meta.publicNotes.length > 0 && (
+        <div class="public-notes">
+          {meta.publicNotes.map((note) => (
+            <p>{note}</p>
+          ))}
+        </div>
+      )
+    }
     <div class="contact-stack">
       <a href="tel:+16108102982">(610) 810-2982</a>
       <a href="mailto:trailsidepa@gmail.com">trailsidepa@gmail.com</a>

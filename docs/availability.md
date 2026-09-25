@@ -28,6 +28,7 @@ Booked and held dates live in `data/availability.json`.
 - `status` is `booked` or `hold`. Dates not listed are treated as open.
 - `note` is optional and is read to assistive tech with the day. Keep the word SAMPLE until the file is real.
 - Set `"source": "live"` only when the records are the owners’ actual calendar. The sample banner switches to the file’s `disclaimer`.
+- `publicNotes` is optional copy shown beside the grid. Use it for statements the owners have published that are not a day-by-day list. The August 11, 2026 note about remaining November and December holiday dates, and weekday availability, lives here. Those exact days were on a graphic, so they are not entered as booked or open records.
 
 Rebuild and redeploy after editing. The static site reads this file at build time through `getAvailability`.
 

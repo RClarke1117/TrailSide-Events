@@ -1,14 +1,13 @@
 {
   "source": "sample",
   "disclaimer": "Illustrative sample data. These are not real bookings. Availability stays illustrative until Jordan and Brandon connect their calendar.",
-  "updatedAt": "2026-09-20",
+  "updatedAt": "2026-09-25",
+  "publicNotes": [
+    "On August 11, 2026, TrailSide posted that some November and December 2026 holiday dates were still open, and that weekdays are available. The days lived on a graphic, not a written list, so they are not marked on this sample grid.",
+    "Another public note said February Sundays were open and March and April Saturdays and Sundays were booked, and asked people to call about other days. The year was not printed, so those days are not marked here either.",
+    "Ask Jordan — she is the main contact — or write trailsidepa@gmail.com. Tours and packages are by appointment."
+  ],
   "records": [
-    {
-      "date": "2026-09-26",
-      "status": "booked",
-      "note": "SAMPLE — private celebration",
-      "updatedAt": "2026-09-20"
-    },
     {
       "date": "2026-10-03",
       "status": "booked",

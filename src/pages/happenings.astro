@@ -1,47 +1,82 @@
 ---
 import Base from '../layouts/Base.astro';
 import NextStep from '../components/NextStep.astro';
+import { formatEventWhen, listEvents } from '../lib/events';
 import { site } from '../lib/site';
+
+const { upcoming, past, undated } = listEvents();
+const highlights = [...past, ...undated];
 ---
 
 <Base
   title="Happenings"
-  description="Upcoming public events at TrailSide Events PA. Private dates are requested through the inquiry calendar."
+  description="Upcoming and past public events at TrailSide Events PA, including the Sports Card & Memorabilia Sale."
 >
   <article class="page">
     <header class="wrap mast">
       <p class="eyebrow">Happenings</p>
-      <h1>Public nights, when they are announced.</h1>
+      <h1>What the house is hosting in public.</h1>
       <p class="lede">
-        TrailSide hosts its own events and community gatherings as well as private rentals. No upcoming public date has been confirmed for this site yet. Announcements live on Facebook until they are added here. Nothing below is invented to fill the calendar.
+        Dates come from <code>data/events.json</code>. A start date on or after today in Lehighton is upcoming. An earlier start date is past. An event with no date stays a highlight, not a coming night.
       </p>
     </header>
 
     <div class="wrap">
-      <div class="empty-state" data-reveal>
-        <h2>Nothing posted for the coming weeks.</h2>
-        <p>
-          When Jordan and Brandon announce a performance or community event, it will be listed here with the date they publish. For a private wedding, shower, or party, use the inquiry calendar.
-        </p>
-      </div>
+      <section class="event-block">
+        <p class="section-kicker">Upcoming</p>
+        <h2 class="section-title">On the calendar</h2>
+        {
+          upcoming.length === 0 ? (
+            <div class="empty-state" data-reveal>
+              <h2>Nothing dated ahead.</h2>
+              <p>When Jordan and Brandon add a start date to the events file, it will show here.</p>
+            </div>
+          ) : (
+            <ul class="record-list">
+              {upcoming.map((event) => (
+                <li data-reveal>
+                  <div>
+                    <span class="pill">Upcoming</span>
+                    <p>{formatEventWhen(event)}</p>
+                  </div>
+                  <div>
+                    <h3>{event.title}</h3>
+                    <p>{event.summary}</p>
+                    <p>
+                      {event.place}. With {event.hosts}. {event.source}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </section>
 
-      <section class="section">
-        <p class="section-kicker">On the record</p>
-        <h2 class="section-title">A date already kept</h2>
+      <section class="event-block">
+        <p class="section-kicker">Past</p>
+        <h2 class="section-title">Highlights already kept</h2>
         <ul class="record-list">
-          <li data-reveal>
-            <div>
-              <span class="pill">Past</span>
-              <p>May 2, 2024</p>
-            </div>
-            <div>
-              <h3>Grand opening ribbon cutting</h3>
-              <p>6–8 p.m. with the Carbon County Chamber, at the house on North Main Lane. Bookings began after this evening. This is history, not an upcoming event.</p>
-            </div>
-          </li>
+          {
+            highlights.map((event) => (
+              <li data-reveal>
+                <div>
+                  <span class="pill">Past</span>
+                  <p>{formatEventWhen(event)}</p>
+                </div>
+                <div>
+                  <h3>{event.title}</h3>
+                  <p>{event.summary}</p>
+                  <p>
+                    {event.place}. {event.source}
+                  </p>
+                </div>
+              </li>
+            ))
+          }
         </ul>
-        <p class="lede">Follow new public dates on <a href={site.facebook}>Facebook</a>.</p>
-        <NextStep title="Reserve the room for a private day." copy="The sample calendar shows how open and booked days will look. Call or inquire to request one." href="/inquire#calendar" label="Check a date" />
+        <p class="lede">New public dates are also posted on <a href={site.facebook}>Facebook</a>.</p>
+        <NextStep title="Plan a private day around the public ones." copy="The sample calendar is still illustrative. Call or inquire and Jordan will confirm the date." href="/inquire#calendar" label="Check a date" />
       </section>
     </div>
   </article>

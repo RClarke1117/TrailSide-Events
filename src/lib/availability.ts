@@ -13,6 +13,7 @@ export interface AvailabilityMeta {
   source: 'sample' | 'live';
   disclaimer: string;
   updatedAt?: string;
+  publicNotes: string[];
 }
 
 const MONTH = /^\d{4}-\d{2}$/;
@@ -39,6 +40,7 @@ export function getAvailabilityMeta(): AvailabilityMeta {
     source: file.source === 'live' ? 'live' : 'sample',
     disclaimer: file.disclaimer,
     updatedAt: file.updatedAt,
+    publicNotes: file.publicNotes ?? [],
   };
 }
 

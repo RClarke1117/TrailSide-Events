@@ -15,6 +15,7 @@ export const site = {
   phoneTel: '+16108102982',
   email: 'trailsidepa@gmail.com',
   facebook: 'https://www.facebook.com/trailsideeventspa',
+  facebookReviews: 'https://www.facebook.com/trailsideeventspa/reviews',
   maps: 'https://www.google.com/maps/search/?api=1&query=201+North+Main+Lane+Lehighton+PA+18235',
   owners: 'Jordan and Brandon Cummins',
   studio: {
@@ -24,14 +25,15 @@ export const site = {
 } as const;
 
 export const eventTypes = [
-  { value: 'intimate-wedding', label: 'Intimate wedding' },
-  { value: 'bridal-shower', label: 'Bridal shower' },
-  { value: 'baby-shower', label: 'Baby shower' },
-  { value: 'birthday', label: 'Birthday celebration' },
-  { value: 'private-party', label: 'Private party' },
-  { value: 'performance', label: 'Performance' },
+  { value: 'wedding-reception', label: 'Wedding or reception' },
+  { value: 'rehearsal-dinner', label: 'Rehearsal dinner' },
+  { value: 'reunion', label: 'Reunion' },
+  { value: 'shower', label: 'Shower' },
+  { value: 'birthday', label: 'Birthday' },
+  { value: 'holiday-party', label: 'Holiday party' },
+  { value: 'corporate', label: 'Corporate party' },
   { value: 'community', label: 'Community event' },
-  { value: 'conference', label: 'Conference or meeting' },
+  { value: 'performance', label: 'Live music or performance' },
   { value: 'other', label: 'Something else' },
 ] as const;
 

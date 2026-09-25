@@ -3,18 +3,43 @@ interface Props {
   title: string;
   texture: string;
   className?: string;
+  image?: string;
+  alt?: string;
+  credit?: string;
 }
 
-const { title, texture, className = '' } = Astro.props;
+const { title, texture, className = '', image = '', alt = '', credit = '' } = Astro.props;
+const photo = image.trim();
 ---
 
 <figure class:list={['frame', className]} data-reveal>
   <div class="frame-mat">
-    <div class:list={['texture', texture]}></div>
-    <p class="placeholder-label">Photograph forthcoming</p>
+    {
+      photo ? (
+        <img src={photo} alt={alt || title} />
+      ) : (
+        <div class:list={['texture', texture]}></div>
+      )
+    }
+    {!photo && <p class="placeholder-label">Venue photo coming</p>}
   </div>
   <figcaption>
     <strong>{title}</strong>
-    <span>Placeholder</span>
+    <span>{photo ? credit || 'Venue' : 'Venue photo coming'}</span>
   </figcaption>
+  {credit && <p class="frame-credit">{credit}</p>}
 </figure>
+
+<style>
+  .frame-mat img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .frame-credit {
+    margin: -0.35rem 0 0;
+    color: var(--ink-soft);
+    font-size: 0.75rem;
+  }
+</style>

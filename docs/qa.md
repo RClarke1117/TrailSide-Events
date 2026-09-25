@@ -21,6 +21,10 @@ Pages: Home, The House, Gatherings, Gallery, Happenings, Inquire, and the 404.
 - `trailsidepa@gmail.com` is visible on the inquiry form.
 - At 768 and 390 the header collapses to Menu. Opening it shows The House, Gatherings, Gallery, Happenings, and Check a date on a cream panel (`aria-expanded` becomes true).
 
+## Facebook content pass
+
+Reviews, gatherings, happenings, gallery labels, and the calendar notes were updated from the public Facebook page. Screenshots in this folder were recaptured after that pass. The sports card sale renders as upcoming. July 4 and the ribbon cutting render as past. Quotes use first names only. Gallery frames still say “Venue photo coming.”
+
 ## Fixes during this pass
 
 - The full navigation was still inline at tablet width, because the menu only appeared below 760px. The menu now takes over at 980px, before the links collide with the wordmark.

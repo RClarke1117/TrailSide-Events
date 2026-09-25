@@ -1,0 +1,77 @@
+{
+  "note": "Set image to a path under public/ (for example /gallery/main-room.jpg) only when the photograph shows the venue, décor, or table and contains no people. Leave image empty to keep the placeholder. credit is required when image is a licensed texture or a photographer’s file.",
+  "frames": [
+    {
+      "id": "main-room",
+      "title": "The main room",
+      "layout": "frame-a",
+      "texture": "texture-room",
+      "image": "",
+      "alt": "",
+      "credit": "Generic texture, not a photograph of TrailSide."
+    },
+    {
+      "id": "window-light",
+      "title": "Window light",
+      "layout": "frame-b",
+      "texture": "texture-evening",
+      "image": "",
+      "alt": "",
+      "credit": "Generic texture, not a photograph of TrailSide."
+    },
+    {
+      "id": "timber",
+      "title": "Timber",
+      "layout": "frame-c",
+      "texture": "texture-timber",
+      "image": "",
+      "alt": "",
+      "credit": "Generic texture, not a photograph of TrailSide."
+    },
+    {
+      "id": "brick",
+      "title": "Brick",
+      "layout": "frame-d",
+      "texture": "texture-brick",
+      "image": "",
+      "alt": "",
+      "credit": "Generic texture, not a photograph of TrailSide."
+    },
+    {
+      "id": "table",
+      "title": "A set table",
+      "layout": "frame-e",
+      "texture": "texture-table",
+      "image": "",
+      "alt": "",
+      "credit": "Generic texture, not a photograph of TrailSide."
+    },
+    {
+      "id": "stove",
+      "title": "The Lehigh stove",
+      "layout": "frame-f",
+      "texture": "texture-stove",
+      "image": "",
+      "alt": "",
+      "credit": "Generic texture, not a photograph of TrailSide."
+    },
+    {
+      "id": "lane",
+      "title": "North Main Lane",
+      "layout": "frame-g",
+      "texture": "texture-lane",
+      "image": "",
+      "alt": "",
+      "credit": "Generic texture, not a photograph of TrailSide."
+    },
+    {
+      "id": "trail",
+      "title": "Toward the D&L",
+      "layout": "frame-h",
+      "texture": "texture-trail",
+      "image": "",
+      "alt": "",
+      "credit": "Generic texture, not a photograph of TrailSide."
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { getAvailability, getAvailabilityMeta, shiftMonth } from '../src/lib/availability.ts';
+import { eventTiming, listEvents } from '../src/lib/events.ts';
 
 test('sample meta stays marked as sample', () => {
   const meta = getAvailabilityMeta();
@@ -24,4 +25,13 @@ test('shiftMonth crosses the year', () => {
 
 test('rejects a bad month', async () => {
   await assert.rejects(() => getAvailability('2026-13'));
+});
+
+test('sports card sale is upcoming on Sep 25 2026 and July 4 is past', () => {
+  const now = new Date('2026-09-25T15:00:00-04:00');
+  const { upcoming, past, undated } = listEvents(now);
+  assert.equal(upcoming.some((event) => event.id === 'sports-card-sale-2026'), true);
+  assert.equal(past.some((event) => event.id === 'july-4-highlight'), true);
+  assert.equal(undated.some((event) => event.id === 'live-music-nights'), true);
+  assert.equal(eventTiming({ id: 'x', title: '', start: null, end: null, place: '', hosts: '', summary: '', source: '' }, now), 'undated');
 });

@@ -996,6 +996,69 @@ button.day:hover {
   text-decoration: none;
 }
 
+.public-notes p {
+  margin: 0 0 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.review-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--gold);
+  color: #f0d7b4;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  font-size: 0.92rem;
+}
+
+.review-badge:hover {
+  color: var(--cream);
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.review {
+  margin: 0;
+  padding: 1.25rem 1.2rem 1.1rem;
+  background: var(--cream);
+  border: 1px solid var(--line);
+}
+
+.review p {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  font-variation-settings: "SOFT" 50, "opsz" 36, "wght" 460;
+}
+
+.review footer {
+  margin-top: 0.9rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+}
+
+.event-block + .event-block {
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 760px) {
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .form-panel {
   margin-top: 1.5rem;
 }

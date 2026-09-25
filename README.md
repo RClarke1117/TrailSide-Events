@@ -43,7 +43,7 @@ Display type is Fraunces. Interface and body type is Schibsted Grotesk. The pair
 
 Facts are taken from the owners’ May 2, 2024 Times News interview, the November 22, 2025 Times News report of the Carbon County Chamber award, the chamber listing, and the brief for this project. Prices, guest capacity, hours, unpublished reviews, and upcoming events are not invented. The availability calendar ships with a labeled sample dataset.
 
-Gallery frames are placeholders. Photographs are omitted unless they can be confirmed to contain no people.
+Gallery frames are placeholders driven by `data/gallery.json`. Set `image` only for a venue photograph with no people. Public events live in `data/events.json` and are marked upcoming or past from the start date. Photographs are omitted unless they can be confirmed to contain no people. Facebook recommendations are quoted from the public reviews page.
 
 ## Docs
 
