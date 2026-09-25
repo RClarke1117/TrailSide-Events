@@ -6,9 +6,9 @@
       "title": "The main room",
       "layout": "frame-a",
       "texture": "texture-room",
-      "image": "",
-      "alt": "",
-      "credit": "Generic texture, not a photograph of TrailSide."
+      "image": "/media/hero-interior.jpg",
+      "alt": "The TrailSide room with the bar, timber posts, and tables. No guests are in the frame.",
+      "credit": "TrailSide Events"
     },
     {
       "id": "window-light",
