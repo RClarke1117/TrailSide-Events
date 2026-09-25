@@ -469,7 +469,7 @@ main {
   position: relative;
   height: 5.25rem;
   overflow: hidden;
-  background: var(--ink);
+  background: var(--forest);
   pointer-events: none;
 }
 
@@ -482,6 +482,7 @@ main {
   display: block;
   width: 100%;
   height: 100%;
+  color: var(--forest);
 }
 
 .content-break-mark {
@@ -491,7 +492,7 @@ main {
   width: 2.35rem;
   height: 2.65rem;
   transform: translateX(-50%);
-  color: var(--ink);
+  color: var(--forest);
 }
 
 .content-break-mark svg {
