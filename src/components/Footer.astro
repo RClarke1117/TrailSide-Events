@@ -1,0 +1,37 @@
+---
+import { site } from '../lib/site';
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h2>TrailSide</h2>
+      <p>
+        A historic performance and event house on North Main Lane, kept by {site.owners}. Dates are confirmed by the owners — this site does not book a day on its own.
+      </p>
+    </div>
+    <div>
+      <h2>Visit</h2>
+      <ul>
+        <li><a href={site.maps}>{site.address.line}</a></li>
+        <li>Adjacent to the D&amp;L Trail</li>
+        <li>Across from Dunbar Bottling Co.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <ul>
+        <li><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={site.facebook}>Facebook</a></li>
+        <li><a href="/inquire#calendar">Check a date</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>© {new Date().getFullYear()} {site.name}</p>
+    <p>
+      Website by <a href={site.studio.url}>{site.studio.name}</a>
+    </p>
+  </div>
+</footer>

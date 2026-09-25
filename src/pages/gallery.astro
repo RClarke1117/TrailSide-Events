@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import PlaceholderFrame from '../components/PlaceholderFrame.astro';
+import NextStep from '../components/NextStep.astro';
+
+const frames = [
+  { className: 'frame-a', title: 'The main room', texture: 'texture-room' },
+  { className: 'frame-b', title: 'Evening window light', texture: 'texture-evening' },
+  { className: 'frame-c', title: 'Timber overhead', texture: 'texture-timber' },
+  { className: 'frame-d', title: 'Brick', texture: 'texture-brick' },
+  { className: 'frame-e', title: 'A set table', texture: 'texture-table' },
+  { className: 'frame-f', title: 'The Lehigh stove', texture: 'texture-stove' },
+  { className: 'frame-g', title: 'North Main Lane', texture: 'texture-lane' },
+  { className: 'frame-a', title: 'Toward the D&L', texture: 'texture-trail' },
+];
+---
+
+<Base
+  title="Gallery"
+  description="Placeholder frames for TrailSide Events PA. Real venue photographs will be added only when they show the space, not guests."
+>
+  <article class="page">
+    <header class="wrap mast">
+      <p class="eyebrow">Gallery</p>
+      <h1>Photographs of the house, not the guests.</h1>
+      <p class="lede">
+        These frames are marked placeholders. Public photos found while building the site could not be verified as free of people, so they are not used. When photography of the empty room, details, décor, and tables is ready, it will replace the textures below.
+      </p>
+    </header>
+    <div class="wrap gallery-grid">
+      {frames.map((frame) => <PlaceholderFrame className={frame.className} title={frame.title} texture={frame.texture} />)}
+    </div>
+    <div class="wrap">
+      <NextStep title="Plan from the description for now." copy="The inquiry form is the way to ask how the room looks set for your day." href="/inquire#inquiry" label="Start an inquiry" />
+    </div>
+  </article>
+</Base>

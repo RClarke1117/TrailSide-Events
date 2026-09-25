@@ -1,0 +1,131 @@
+---
+import { eventTypes, formEndpoint, site } from '../lib/site';
+---
+
+<section id="inquiry" class="form-panel" aria-labelledby="inquiry-heading">
+  <h2 id="inquiry-heading">Inquire about a date</h2>
+  <p class="email-line">
+    This inquiry is sent to <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+  <p class="form-intro">
+    Tell Jordan and Brandon what you have in mind. Submitting this form requests a date. It does not reserve the house, place a hold, or take payment.
+  </p>
+  <form class="inquiry-form" data-inquiry data-endpoint={formEndpoint} novalidate>
+    <label class="field">
+      <span>Name</span>
+      <input name="name" type="text" autocomplete="name" required />
+    </label>
+    <label class="field">
+      <span>Email</span>
+      <input name="email" type="email" autocomplete="email" required />
+    </label>
+    <label class="field">
+      <span>Phone</span>
+      <input name="phone" type="tel" autocomplete="tel" required />
+    </label>
+    <label class="field">
+      <span>Event type</span>
+      <select name="event_type" required>
+        <option value="">Select one</option>
+        {eventTypes.map((type) => <option value={type.value}>{type.label}</option>)}
+      </select>
+    </label>
+    <label class="field">
+      <span>Preferred date</span>
+      <input id="preferred-date" name="preferred_date" type="date" required />
+    </label>
+    <label class="field">
+      <span>Guest count</span>
+      <input name="guest_count" type="number" min="1" inputmode="numeric" placeholder="If you know it" />
+    </label>
+    <label class="field field-wide">
+      <span>Message</span>
+      <textarea name="message" required placeholder="The shape of the day, timing, and anything the house should know."></textarea>
+    </label>
+    <label class="honeypot">
+      Company website
+      <input name="company_website" tabindex="-1" autocomplete="off" />
+    </label>
+    <div class="form-actions">
+      <button class="btn" type="submit">Request this date</button>
+      <a class="btn btn-ghost" href={`tel:${site.phoneTel}`}>Call {site.phoneDisplay}</a>
+    </div>
+    <p class="form-status" role="status" data-form-status></p>
+  </form>
+</section>
+
+<script>
+  import { eventTypes } from '../lib/site';
+  import { site } from '../lib/site';
+
+  const labels = Object.fromEntries(eventTypes.map((type) => [type.value, type.label]));
+
+  function buildMailto(form: HTMLFormElement) {
+    const data = new FormData(form);
+    const lines = [
+      `Name: ${data.get('name') || ''}`,
+      `Email: ${data.get('email') || ''}`,
+      `Phone: ${data.get('phone') || ''}`,
+      `Event type: ${labels[String(data.get('event_type') || '')] || data.get('event_type') || ''}`,
+      `Preferred date: ${data.get('preferred_date') || ''}`,
+      `Guest count: ${data.get('guest_count') || ''}`,
+      '',
+      String(data.get('message') || ''),
+    ];
+    const subject = encodeURIComponent('TrailSide date inquiry');
+    const body = encodeURIComponent(lines.join('\n'));
+    return `mailto:${site.email}?subject=${subject}&body=${body}`;
+  }
+
+  function initInquiry() {
+    const form = document.querySelector('[data-inquiry]');
+    if (!(form instanceof HTMLFormElement)) return;
+    const status = form.querySelector('[data-form-status]');
+    const params = new URLSearchParams(window.location.search);
+    const date = params.get('date');
+    const type = params.get('type');
+    const dateInput = form.querySelector('#preferred-date');
+    const typeInput = form.querySelector('[name="event_type"]');
+    if (date && dateInput instanceof HTMLInputElement && !dateInput.value) dateInput.value = date;
+    if (type && typeInput instanceof HTMLSelectElement) typeInput.value = type;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const honeypot = form.querySelector('[name="company_website"]');
+      if (honeypot instanceof HTMLInputElement && honeypot.value) return;
+
+      const endpoint = form.dataset.endpoint || '';
+      if (!endpoint) {
+        window.location.href = buildMailto(form);
+        if (status) {
+          status.textContent = `Your email app should open with this inquiry addressed to ${site.email}. If it does not, send the same details there yourself.`;
+        }
+        return;
+      }
+
+      if (status) status.textContent = 'Sending…';
+      try {
+        const body = new FormData(form);
+        body.set('_subject', 'TrailSide date inquiry');
+        body.set('_replyto', String(body.get('email') || ''));
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          body,
+          headers: { Accept: 'application/json' },
+        });
+        if (!response.ok) throw new Error('Request failed');
+        form.reset();
+        if (status) status.textContent = `Sent. Jordan and Brandon will reply at the email you gave. A copy path remains ${site.email} if you need to write again.`;
+      } catch {
+        if (status) {
+          status.classList.add('is-error');
+          status.textContent = `The form endpoint did not accept the inquiry. Your email app can still deliver it to ${site.email}.`;
+        }
+        window.location.href = buildMailto(form);
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', initInquiry);
+</script>

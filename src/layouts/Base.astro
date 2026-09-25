@@ -1,0 +1,110 @@
+---
+import '@fontsource-variable/fraunces/full.css';
+import '@fontsource-variable/fraunces/full-italic.css';
+import '@fontsource-variable/schibsted-grotesk/wght.css';
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../lib/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  overlay?: boolean;
+}
+
+const { title, description = site.description, overlay = false } = Astro.props;
+const fullTitle = title === site.shortName ? `${site.name} · Lehighton` : `${title} · ${site.name}`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EventVenue',
+  name: site.name,
+  description: site.tagline,
+  url: Astro.url.href,
+  telephone: site.phoneTel,
+  email: site.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postal,
+    addressCountry: 'US',
+  },
+  sameAs: [site.facebook],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{fullTitle}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+    <ClientRouter fallback="swap" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <Header overlay={overlay} />
+    <main id="content">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      declare global {
+        interface Window {
+          __trailsideHeader?: boolean;
+        }
+      }
+      function initMotion() {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        document.querySelectorAll('[data-reveal]').forEach((node) => {
+          if (reduce) {
+            node.classList.add('is-in');
+            return;
+          }
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-in');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.16 },
+          );
+          observer.observe(node);
+        });
+      }
+
+      function syncHeader() {
+        const header = document.querySelector('[data-header]');
+        if (!header) return;
+        const overlay = header.getAttribute('data-overlay') === 'true';
+        header.classList.toggle('is-solid', !overlay || window.scrollY > 12);
+      }
+
+      if (!window.__trailsideHeader) {
+        window.addEventListener('scroll', syncHeader, { passive: true });
+        window.__trailsideHeader = true;
+      }
+
+      document.addEventListener('astro:page-load', () => {
+        initMotion();
+        syncHeader();
+      });
+    </script>
+  </body>
+</html>

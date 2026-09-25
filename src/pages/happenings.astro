@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import NextStep from '../components/NextStep.astro';
+import { site } from '../lib/site';
+---
+
+<Base
+  title="Happenings"
+  description="Upcoming public events at TrailSide Events PA. Private dates are requested through the inquiry calendar."
+>
+  <article class="page">
+    <header class="wrap mast">
+      <p class="eyebrow">Happenings</p>
+      <h1>Public nights, when they are announced.</h1>
+      <p class="lede">
+        TrailSide hosts its own events and community gatherings as well as private rentals. No upcoming public date has been confirmed for this site yet. Announcements live on Facebook until they are added here. Nothing below is invented to fill the calendar.
+      </p>
+    </header>
+
+    <div class="wrap">
+      <div class="empty-state" data-reveal>
+        <h2>Nothing posted for the coming weeks.</h2>
+        <p>
+          When Jordan and Brandon announce a performance or community event, it will be listed here with the date they publish. For a private wedding, shower, or party, use the inquiry calendar.
+        </p>
+      </div>
+
+      <section class="section">
+        <p class="section-kicker">On the record</p>
+        <h2 class="section-title">A date already kept</h2>
+        <ul class="record-list">
+          <li data-reveal>
+            <div>
+              <span class="pill">Past</span>
+              <p>May 2, 2024</p>
+            </div>
+            <div>
+              <h3>Grand opening ribbon cutting</h3>
+              <p>6–8 p.m. with the Carbon County Chamber, at the house on North Main Lane. Bookings began after this evening. This is history, not an upcoming event.</p>
+            </div>
+          </li>
+        </ul>
+        <p class="lede">Follow new public dates on <a href={site.facebook}>Facebook</a>.</p>
+        <NextStep title="Reserve the room for a private day." copy="The sample calendar shows how open and booked days will look. Call or inquire to request one." href="/inquire#calendar" label="Check a date" />
+      </section>
+    </div>
+  </article>
+</Base>

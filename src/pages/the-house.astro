@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import NextStep from '../components/NextStep.astro';
+import { site } from '../lib/site';
+---
+
+<Base
+  title="The House"
+  description="The history of TrailSide Events PA: mill, lumber yard, Lehigh Stove Co., Insurrection Distillery, and the house Jordan and Brandon Cummins opened in Lehighton in 2024."
+>
+  <article class="page">
+    <header class="wrap mast">
+      <p class="eyebrow">The house</p>
+      <h1>A mill building that learned how to host.</h1>
+      <p class="lede">
+        {site.owners} opened TrailSide in spring 2024 at {site.address.line}, across from Dunbar Bottling Co. and beside the D&amp;L Trail. They describe it as a historic performance and event venue with rustic elegance and modern amenities.
+      </p>
+    </header>
+
+    <div class="wrap split">
+      <blockquote class="quote" data-reveal>
+        <p>“We couldn’t shake our love for this space.”</p>
+        <footer>Jordan Cummins, to Times News, May 2, 2024. She and Brandon had first pictured a bar and restaurant, then shaped an event house around the rest of their lives.</footer>
+      </blockquote>
+      <div data-reveal>
+        <p>
+          In that same interview, Jordan said the area had few rooms for special occasions. TrailSide would rent the space, host its own events, and collaborate with Half Barrel Brewing and other local businesses for community gatherings. That collaboration was their plan at opening; this site does not list a current partner roster beyond that public statement.
+        </p>
+        <p>
+          The name TrailSide Events was inspired by the building’s place next to the historic D&amp;L Trail. The Lehigh Stove Co. years are honored with an original stove still in the house.
+        </p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="section-kicker">On the record</p>
+        <h2 class="section-title">How the building arrived here</h2>
+        <ol class="chapter-list">
+          <li data-reveal>
+            <span class="when">Roots</span>
+            <div>
+              <h3>Henry Miller Planning Mill</h3>
+              <p>The earliest use Jordan described after looking into the building’s past.</p>
+            </div>
+          </li>
+          <li data-reveal>
+            <span class="when">Then</span>
+            <div>
+              <h3>City Lumber Company</h3>
+              <p>The mill’s next chapter, before the stove works.</p>
+            </div>
+          </li>
+          <li data-reveal>
+            <span class="when">Then</span>
+            <div>
+              <h3>Lehigh Stove Co.</h3>
+              <p>An original stove remains on the premises as a reminder of that work.</p>
+            </div>
+          </li>
+          <li data-reveal>
+            <span class="when">Then</span>
+            <div>
+              <h3>Insurrection Distillery</h3>
+              <p>The last tenant before TrailSide. The grand opening was held in this building.</p>
+            </div>
+          </li>
+          <li data-reveal>
+            <span class="when">May 2, 2024</span>
+            <div>
+              <h3>Ribbon cutting</h3>
+              <p>6–8 p.m. with the Carbon County Chamber. Bookings opened after that evening.</p>
+            </div>
+          </li>
+          <li data-reveal>
+            <span class="when">Nov 14, 2025</span>
+            <div>
+              <h3>Business of the Year</h3>
+              <p>Carbon County Chamber &amp; Economic Development Corporation, at the chamber’s Annual Awards Gala.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="lede">
+          Source for the building history and the owners’ plans: Terry Ahner, “Trailside Events to open in former Lehighton distillery building,” Times News, May 2, 2024. Award: Times News, November 22, 2025.
+        </p>
+        <NextStep title="See what the house is for." copy="Weddings, showers, birthdays, performances, and the practical things already in the room." href="/gatherings" label="Gatherings" />
+      </div>
+    </section>
+  </article>
+</Base>

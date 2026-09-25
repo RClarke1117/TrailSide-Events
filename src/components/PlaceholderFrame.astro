@@ -1,0 +1,20 @@
+---
+interface Props {
+  title: string;
+  texture: string;
+  className?: string;
+}
+
+const { title, texture, className = '' } = Astro.props;
+---
+
+<figure class:list={['frame', className]} data-reveal>
+  <div class="frame-mat">
+    <div class:list={['texture', texture]}></div>
+    <p class="placeholder-label">Photograph forthcoming</p>
+  </div>
+  <figcaption>
+    <strong>{title}</strong>
+    <span>Placeholder</span>
+  </figcaption>
+</figure>

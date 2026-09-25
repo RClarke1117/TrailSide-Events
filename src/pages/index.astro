@@ -1,0 +1,150 @@
+---
+import Base from '../layouts/Base.astro';
+import HouseScene from '../components/HouseScene.astro';
+import PlaceholderFrame from '../components/PlaceholderFrame.astro';
+import NextStep from '../components/NextStep.astro';
+import { site } from '../lib/site';
+---
+
+<Base title={site.shortName} overlay={true}>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow" data-load="1">Lehighton, Pennsylvania · Spring 2024</p>
+      <h1 data-load="2">
+        TrailSide
+        <em>on the D&amp;L.</em>
+      </h1>
+      <p class="deck" data-load="3">
+        A historic performance and event house in the former mill building at 201 North Main Lane. Rustic elegance, modern amenities, and celebrations kept personal by {site.owners}.
+      </p>
+      <div class="hero-actions" data-load="4">
+        <a class="btn" href="/inquire#calendar">Check a date</a>
+        <a class="btn btn-ghost" href="/the-house">The story of the house</a>
+      </div>
+      <div class="hero-meta" data-load="5">
+        <span>2025 Business of the Year</span>
+        <span>Carbon County Chamber</span>
+        <span>Intimate weddings &amp; gatherings</span>
+      </div>
+    </div>
+    <HouseScene />
+  </section>
+
+  <section class="section">
+    <div class="wrap section-head">
+      <div data-reveal>
+        <p class="section-kicker">The house</p>
+        <h2 class="section-title">Four lives, then a place to gather.</h2>
+      </div>
+      <p class="section-copy" data-reveal>
+        Before TrailSide, these walls were the Henry Miller Planning Mill, the City Lumber Company, the Lehigh Stove Co., and Insurrection Distillery. An original stove from the stove works is still in the house. The name comes from the historic D&amp;L Trail next door.
+      </p>
+    </div>
+    <div class="wrap">
+      <ol class="chapter-list">
+        <li data-reveal>
+          <span class="when">Earlier</span>
+          <div>
+            <h3>Mill, lumber, stove works</h3>
+            <p>Jordan Cummins traced the building from a planning mill to City Lumber and then the Lehigh Stove Co.</p>
+          </div>
+        </li>
+        <li data-reveal>
+          <span class="when">Later</span>
+          <div>
+            <h3>Insurrection Distillery</h3>
+            <p>The couple took the former distillery after first imagining a bar, then choosing an event house that could live beside their full-time work.</p>
+          </div>
+        </li>
+        <li data-reveal>
+          <span class="when">Spring 2024</span>
+          <div>
+            <h3>TrailSide opens</h3>
+            <p>A ribbon cutting with the Carbon County Chamber on May 2, 2024, opened the doors to bookings.</p>
+          </div>
+        </li>
+      </ol>
+      <NextStep title="Read the longer history." copy="The building, the stove, and why the name sits beside the trail." href="/the-house" label="Visit the house" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap section-head">
+      <div data-reveal>
+        <p class="section-kicker">Gatherings</p>
+        <h2 class="section-title">Weddings, showers, and nights the town comes in.</h2>
+      </div>
+      <p class="section-copy" data-reveal>
+        The house hosts birthday celebrations, bridal and baby showers, intimate weddings, private parties, performances, conferences, and community events. You may bring your own food, drinks, and supplies, or ask about a local caterer.
+      </p>
+    </div>
+    <div class="wrap card-grid">
+      <article class="card" data-reveal>
+        <h3>Intimate weddings</h3>
+        <p>A smaller room for a ceremony and the meal that follows. Guest count and timing are confirmed when you inquire — no capacity is published here.</p>
+        <a href="/inquire?type=intimate-wedding#inquiry">Request a wedding date</a>
+      </article>
+      <article class="card" data-reveal>
+        <h3>Showers &amp; birthdays</h3>
+        <p>Bridal showers, baby showers, and birthday celebrations. Tables and chairs are in the house, along with a refrigerator, freezer, chafing dishes, and coffee service.</p>
+        <a href="/gatherings">See every gathering</a>
+      </article>
+      <article class="card" data-reveal>
+        <h3>Performances &amp; neighbors</h3>
+        <p>The house was opened as a performance venue as well as a place for private parties and community events.</p>
+        <a href="/happenings">Public happenings</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap section-head">
+      <div data-reveal>
+        <p class="section-kicker">Gallery</p>
+        <h2 class="section-title">The room, waiting for photographs.</h2>
+      </div>
+      <p class="section-copy" data-reveal>
+        Real photographs of the venue will replace these frames. Only empty-room, detail, and table photographs will be used — no pictures of guests.
+      </p>
+    </div>
+    <div class="wrap gallery-grid">
+      <PlaceholderFrame className="frame-a" title="The main room" texture="texture-room" />
+      <PlaceholderFrame className="frame-b" title="Window light" texture="texture-evening" />
+      <PlaceholderFrame className="frame-c" title="Timber" texture="texture-timber" />
+      <PlaceholderFrame className="frame-d" title="Brick" texture="texture-brick" />
+      <PlaceholderFrame className="frame-e" title="A set table" texture="texture-table" />
+    </div>
+    <div class="wrap">
+      <NextStep title="Walk the frames." copy="Eight placeholders mark the photographs still to come." href="/gallery" label="Open the gallery" />
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap stat-row">
+      <div data-reveal>
+        <p class="section-kicker">From Facebook</p>
+        <p class="stat">100%<small>Recommend, from 10 Facebook reviews. Individual recommendations are not reprinted here. Read them on the TrailSide Facebook page.</small></p>
+        <p><a href={site.facebook}>facebook.com/trailsideeventspa</a></p>
+      </div>
+      <div class="award" data-reveal>
+        <p class="section-kicker">2025</p>
+        <h2 class="section-title">Business of the Year</h2>
+        <p>
+          Named by the Carbon County Chamber &amp; Economic Development Corporation. The chamber described TrailSide as a premier wedding and event venue, citing a commitment to excellence and creating memorable experiences.
+        </p>
+        <p>Reported by Times News, November 22, 2025. The gala was held November 14, 2025.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <NextStep
+        title="See which days are open."
+        copy="The calendar is a sample until the owners connect real bookings. An open day starts an inquiry. It does not book the house."
+        href="/inquire#calendar"
+        label="Check a date"
+      />
+    </div>
+  </section>
+</Base>

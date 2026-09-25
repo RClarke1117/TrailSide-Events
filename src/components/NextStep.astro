@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  copy: string;
+  href?: string;
+  label?: string;
+}
+
+const { title, copy, href = '/inquire#calendar', label = 'Check a date' } = Astro.props;
+---
+
+<div class="next-step" data-reveal>
+  <div>
+    <p class="section-kicker">Next</p>
+    <h2>{title}</h2>
+    <p>{copy}</p>
+  </div>
+  <a class="btn" href={href}>{label}</a>
+</div>
