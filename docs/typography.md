@@ -1,29 +1,28 @@
 # Typography
 
-The photograph leads. Type sits back: a sharp serif for titles, and a plain sans for everything a guest reads or fills in.
+Headlines need enough weight to sit on timber and brick. The last display face, Instrument Serif, was a hairline and read as thin fashion type on a mill building.
 
-## Display: Instrument Serif
+## Display: Fraunces
 
-Instrument Serif is a single-weight old-style (Rodrigo Fuenzalida, Google Fonts). It is used for the wordmark, page titles, quotes, and the calendar month. The italic is the second line of a headline. There is no softness or wonk axis.
+Fraunces is the same display serif Milk Street Distillery uses. This site loads the standard cut only: optical size and weight. The softness and wonk axes are not loaded, so the letters stay even.
 
-Loaded locally via `@fontsource/instrument-serif` at weight 400, roman and italic.
+Loaded locally via `@fontsource-variable/fraunces` (`standard` and `standard-italic`).
 
-## Text and UI: Figtree
+## Text and UI: Outfit
 
-Figtree is the sans used by Clarke Design Studio. It carries navigation, forms, captions, and body copy.
+Outfit is the geometric sans on Milk Street. It carries navigation, forms, captions, and body copy.
 
-Loaded locally via `@fontsource-variable/figtree`.
+Loaded locally via `@fontsource-variable/outfit`.
 
 ## What was rejected
 
-Fraunces with softness and wonk looked bubbly. Newsreader still felt like a book face sitting on the room. Schibsted Grotesk and Outfit were the previous UI faces. Inter, Jost, Syne, and `system-ui` stay out. System fonts appear only as the CSS generic families `serif` and `sans-serif` behind the real faces.
+Instrument Serif was too thin. Figtree, Newsreader, and Schibsted Grotesk were the earlier pairings. Inter, Jost, Syne, and `system-ui` stay out. System fonts appear only as the CSS generic families `serif` and `sans-serif` behind the real faces.
 
 ## Text on photographs
 
-Any type that sits on a photograph gets a 0.6px black stroke so it stays readable without a heavy scrim. That includes the hero headline, deck, and the header while it is still transparent over the room. Type on the cream pages does not get the stroke.
+Type that sits on a photograph keeps a 0.6px black stroke. The hero title stays in the lower left.
 
 ## Use
 
-- Instrument Serif for the wordmark, page titles, quotes, and calendar month.
-- Figtree for everything a guest scans or fills in.
-- The hero title stays in the lower left, small enough that the room remains the picture.
+- Fraunces for the wordmark, page titles, quotes, and calendar month.
+- Outfit for everything a guest scans or fills in.

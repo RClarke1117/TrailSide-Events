@@ -16,8 +16,8 @@
   --open: #1f6a45;
   --booked: #7a382c;
   --hold: #8d5a16;
-  --serif: "Instrument Serif", serif;
-  --sans: "Figtree Variable", sans-serif;
+  --serif: "Fraunces Variable", serif;
+  --sans: "Outfit Variable", sans-serif;
   --header-h: 4.75rem;
   --wrap: 1120px;
   --gutter: 1.5rem;
@@ -275,7 +275,7 @@ textarea {
 .hero h1 {
   margin: 0;
   font-family: var(--serif);
-  font-weight: 400;
+  font-weight: 560;
   font-size: clamp(2.7rem, 4.6vw, 4.1rem);
   line-height: 0.96;
   letter-spacing: -0.02em;
@@ -382,7 +382,7 @@ main {
 .section-title,
 .block-title {
   font-family: var(--serif);
-  font-weight: 400;
+  font-weight: 520;
   letter-spacing: -0.02em;
   line-height: 1.02;
   margin: 0;
