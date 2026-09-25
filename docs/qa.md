@@ -8,7 +8,7 @@ Viewports:
 - Tablet, 768×1024
 - Mobile, 390×844
 
-Pages: Home, The House, Gatherings, Gallery, Happenings, Inquire, and the 404.
+Pages: Home, The House, Gatherings, Gallery, Happenings, Availability, Inquire, and the 404.
 
 ## Checks
 
@@ -17,9 +17,14 @@ Pages: Home, The House, Gatherings, Gallery, Happenings, Inquire, and the 404.
 - Each page ends with one next step, except Inquire, where the next step is the form itself, and the 404, which offers Check a date.
 - The calendar legend, previous/next month controls, and the sample disclaimer are visible on Inquire.
 - Open days show the date numeral. Booked, Hold, and Past keep a text label, so status is not color alone.
-- Clicking Next month, then the open day October 1, 2026, set Preferred date to `2026-10-01` and announced that the day is a request, not a booking.
+- The calendar is only on `/availability`. Inquire keeps the form and a Check availability link.
+- An open day is a link to `/inquire?date=YYYY-MM-DD`. Opening that URL set Preferred date to `2026-09-28`. The inquire page does not render the calendar.
 - `trailsidepa@gmail.com` is visible on the inquiry form.
 - At 768 and 390 the header collapses to Menu. Opening it shows The House, Gatherings, Gallery, Happenings, and Check a date on a cream panel (`aria-expanded` becomes true).
+
+## Availability page
+
+The month grid, sample note, holiday note, legend, and display-only copy live on `/availability`. Availability is in the desktop and mobile navigation. The home Check a date button points there. No horizontal overflow at 1280, 768, or 390, and the header still fits at 1040.
 
 ## Facebook content pass
 
@@ -43,6 +48,7 @@ Stored in this folder:
 | Gatherings | [gatherings-desktop.png](gatherings-desktop.png) | [gatherings-tablet.png](gatherings-tablet.png) | [gatherings-mobile.png](gatherings-mobile.png) |
 | Gallery | [gallery-desktop.png](gallery-desktop.png) | [gallery-tablet.png](gallery-tablet.png) | [gallery-mobile.png](gallery-mobile.png) |
 | Happenings | [happenings-desktop.png](happenings-desktop.png) | [happenings-tablet.png](happenings-tablet.png) | [happenings-mobile.png](happenings-mobile.png) |
+| Availability | [availability-desktop.png](availability-desktop.png) | [availability-tablet.png](availability-tablet.png) | [availability-mobile.png](availability-mobile.png) |
 | Inquire | [inquire-desktop.png](inquire-desktop.png) | [inquire-tablet.png](inquire-tablet.png) | [inquire-mobile.png](inquire-mobile.png) |
 | 404 | [not-found-desktop.png](not-found-desktop.png) | [not-found-tablet.png](not-found-tablet.png) | [not-found-mobile.png](not-found-mobile.png) |
 

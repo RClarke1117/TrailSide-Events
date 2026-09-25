@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
+import NextStep from '../components/NextStep.astro';
+---
+
+<Base
+  title="Availability"
+  description="See which days at TrailSide Events PA look open. The calendar is a sample. Jordan and Brandon confirm every date."
+>
+  <article class="page">
+    <header class="wrap mast">
+      <p class="eyebrow">Availability</p>
+      <h1>See a day. Ask the house for it.</h1>
+      <p class="lede">
+        This calendar is display-only. To reserve a date, call (610) 810-2982 or send an inquiry. Jordan and Brandon confirm every date. An open day is a request, not a booking.
+      </p>
+    </header>
+    <div class="wrap">
+      <AvailabilityCalendar />
+      <NextStep
+        title="Prefer to write first?"
+        copy="The inquiry form is the same request, with or without a date chosen here."
+        href="/inquire"
+        label="Send an inquiry"
+      />
+    </div>
+  </article>
+</Base>

@@ -1,24 +1,23 @@
 ---
 import Base from '../layouts/Base.astro';
-import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
 import InquiryForm from '../components/InquiryForm.astro';
 import { site } from '../lib/site';
 ---
 
 <Base
   title="Inquire"
-  description="Check a sample date at TrailSide Events PA and send an inquiry to trailsidepa@gmail.com. Dates are confirmed by Jordan and Brandon Cummins."
+  description="Request a date at TrailSide Events PA. Inquiries go to trailsidepa@gmail.com and are confirmed by Jordan and Brandon Cummins."
 >
   <article class="page">
     <header class="wrap mast">
       <p class="eyebrow">Inquire</p>
       <h1>Ask for a day. The house confirms it.</h1>
       <p class="lede">
-        Call {site.phoneDisplay} or write {site.email}. The calendar is display-only. Clicking an open date fills the form. It does not book, hold, or charge anything.
+        Call {site.phoneDisplay} or write {site.email}. Sending this form requests a date. It does not reserve the house.
+        <a href="/availability">Check availability</a>.
       </p>
     </header>
     <div class="wrap">
-      <AvailabilityCalendar />
       <InquiryForm />
       <div class="facts" style="margin-top: 2rem;">
         <div class="fact">

@@ -1,6 +1,6 @@
 # Availability calendar
 
-The calendar on `/inquire` is display-only. Open days can be clicked to prefill the inquiry form. Booked and held days cannot. Past open days are marked Past and cannot be requested from the grid. Nothing is reserved, held, or paid for on the site.
+The calendar lives on `/availability` and is display-only. An open day is a link to `/inquire?date=YYYY-MM-DD#inquiry`, which fills the preferred date. Booked and held days are not links. Past open days are marked Past and cannot be requested from the grid. Nothing is reserved, held, or paid for on the site.
 
 A note above the grid says the shipped dates are a sample until Jordan and Brandon connect real bookings.
 

@@ -880,13 +880,18 @@ main {
   gap: 0.25rem;
 }
 
-button.day {
+button.day,
+a.day {
   cursor: pointer;
   width: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
-button.day:hover {
+button.day:hover,
+a.day:hover {
   border-color: var(--forest);
+  color: inherit;
 }
 
 .day.is-outside {

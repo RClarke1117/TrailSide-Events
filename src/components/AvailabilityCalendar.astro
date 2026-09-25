@@ -1,7 +1,8 @@
 ---
-import { currentMonth, getAvailability, getAvailabilityMeta, monthLabel, weekdayIndex } from '../lib/availability';
+import { currentMonth, getAvailability, getAvailabilityMeta, monthLabel, todayInLehighton, weekdayIndex } from '../lib/availability';
 
 const month = currentMonth();
+const today = todayInLehighton();
 const records = await getAvailability(month);
 const meta = getAvailabilityMeta();
 const label = monthLabel(month);
@@ -29,11 +30,22 @@ const payload = JSON.stringify({ month, records, source: meta.source });
         {
           records.map((record) => {
             const dayNum = Number(record.date.slice(8, 10));
-            const statusLabel = record.status === 'open' ? 'Open' : record.status === 'booked' ? 'Booked' : 'Hold';
-            return (
-              <div class={`day is-${record.status}`}>
+            const past = record.date < today;
+            const statusLabel = past && record.status === 'open' ? 'Past' : record.status === 'open' ? 'Open' : record.status === 'booked' ? 'Booked' : 'Hold';
+            const open = record.status === 'open' && !past;
+            const inner = (
+              <>
                 <span class="day-num">{dayNum}</span>
                 <span class="day-status">{statusLabel}</span>
+              </>
+            );
+            return open ? (
+              <a class={`day is-${record.status}`} href={`/inquire?date=${record.date}#inquiry`}>
+                {inner}
+              </a>
+            ) : (
+              <div class={`day is-${record.status}`} aria-disabled="true">
+                {inner}
               </div>
             );
           })
@@ -50,7 +62,7 @@ const payload = JSON.stringify({ month, records, source: meta.source });
   <aside class="calendar-aside">
     <h2>Request, not a booking</h2>
     <p class="reserve-note">
-      To reserve a date, call <a href="tel:+16108102982">(610) 810-2982</a> or submit an inquiry. Jordan and Brandon confirm every date. Choosing an open day only fills the inquiry form — nothing is held or charged.
+      To reserve a date, call <a href="tel:+16108102982">(610) 810-2982</a> or send an inquiry to request it. Jordan and Brandon confirm every date. An open day opens the inquiry with that date filled in. Nothing is held or charged.
     </p>
     {
       meta.publicNotes.length > 0 && (
@@ -64,7 +76,7 @@ const payload = JSON.stringify({ month, records, source: meta.source });
     <div class="contact-stack">
       <a href="tel:+16108102982">(610) 810-2982</a>
       <a href="mailto:trailsidepa@gmail.com">trailsidepa@gmail.com</a>
-      <a href="#inquiry">Go to the inquiry form</a>
+      <a href="/inquire">Send an inquiry</a>
     </div>
   </aside>
 </section>
@@ -115,7 +127,7 @@ const payload = JSON.stringify({ month, records, source: meta.source });
       const label = `${monthLabel(month).replace(/\s\d{4}$/, '')} ${dayNum}, ${statusLabel}.${note}`;
       if (!past && record.status === 'open') {
         cells.push(
-          `<button type="button" class="${classes.join(' ')}" data-date="${record.date}" aria-label="${label}"><span class="day-num">${dayNum}</span><span class="day-status">${statusLabel}</span></button>`,
+          `<a class="${classes.join(' ')}" href="/inquire?date=${record.date}#inquiry" aria-label="${label}"><span class="day-num">${dayNum}</span><span class="day-status">${statusLabel}</span></a>`,
         );
       } else {
         cells.push(
@@ -138,41 +150,15 @@ const payload = JSON.stringify({ month, records, source: meta.source });
     };
     let month = state.month;
     let records = state.records;
-    let selected = new URLSearchParams(window.location.search).get('date') || '';
     const today = todayInLehighton();
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const paint = () => {
       heading.textContent = monthLabel(month);
-      root.innerHTML = renderGrid(month, records, selected, today);
-    };
-
-    const prefill = (date: string) => {
-      selected = date;
-      const input = document.querySelector('#preferred-date');
-      if (input instanceof HTMLInputElement) input.value = date;
-      const inquiry = document.getElementById('inquiry');
-      inquiry?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-      const pretty = new Intl.DateTimeFormat('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-        timeZone: 'UTC',
-      }).format(new Date(`${date}T00:00:00Z`));
-      if (live) {
-        live.textContent = `${pretty} is filled in on the inquiry form as a request. It is not booked.`;
-      }
-      paint();
+      root.innerHTML = renderGrid(month, records, '', today);
     };
 
     paint();
-    if (selected) prefill(selected);
-
-    root.addEventListener('click', (event) => {
-      const target = event.target instanceof Element ? event.target.closest('[data-date]') : null;
-      if (!(target instanceof HTMLElement) || !target.dataset.date) return;
-      prefill(target.dataset.date);
-    });
 
     document.querySelectorAll('[data-month-nav]').forEach((button) => {
       button.addEventListener('click', async () => {
