@@ -529,6 +529,30 @@ main {
   height: 100%;
 }
 
+.content-break.is-rise .content-break-mark {
+  top: 1.85rem;
+}
+
+.js .content-break:not(.is-in) {
+  clip-path: inset(0 46% 0 46%);
+}
+
+.js .content-break.is-in {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.9s var(--ease);
+}
+
+.js .content-break:not(.is-in) .content-break-mark {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.45);
+}
+
+.js .content-break.is-in .content-break-mark {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  transition: transform 0.55s var(--ease) 0.32s, opacity 0.45s var(--ease) 0.32s;
+}
+
 .content-break + .section,
 .page > .content-break + .wrap,
 .page > .content-break + .section {
@@ -661,6 +685,97 @@ main {
   font-size: 0.92rem;
 }
 
+.gather-feature {
+  display: grid;
+  grid-template-columns: 1.35fr 0.8fr;
+  gap: 1.5rem 2rem;
+  align-items: stretch;
+}
+
+.gather-photo {
+  position: relative;
+  min-height: 24rem;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.gather-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: none;
+}
+
+.gather-photo div {
+  position: relative;
+  width: 100%;
+  padding: 1.6rem 1.5rem 1.4rem;
+  background: linear-gradient(transparent, rgba(12, 10, 8, 0.78));
+}
+
+.gather-photo .section-kicker {
+  color: #e7c39a;
+}
+
+.gather-photo h3,
+.gather-list h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.gather-photo h3 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.gather-photo p,
+.gather-list p {
+  margin: 0.55rem 0 0;
+}
+
+.gather-photo span,
+.gather-list span {
+  display: inline-block;
+  margin-top: 0.9rem;
+  letter-spacing: 0.04em;
+}
+
+.gather-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.gather-list a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+}
+
+.gather-list a:hover {
+  color: var(--amber-deep);
+}
+
+.gather-list h3 {
+  font-size: 1.7rem;
+}
+
+.gather-list p {
+  color: var(--ink-soft);
+}
+
 .quote {
   margin: 0;
   padding: 0;
@@ -684,15 +799,19 @@ main {
   font-style: normal;
 }
 
-.band {
-  background: transparent;
+.section.band {
+  background: linear-gradient(180deg, #3d5648 0%, #24382e 100%);
   color: var(--cream);
-  padding-top: 0.5rem;
+  padding: 3.25rem 0 3.5rem;
+}
+
+.band .section-kicker {
+  color: #e7c39a;
 }
 
 .band .stat-row {
-  background: var(--forest);
-  padding: 2.75rem 2rem;
+  background: transparent;
+  padding: 0;
 }
 
 .band a {
@@ -1668,11 +1787,20 @@ a.day:hover {
     animation: menu-link 0.5s var(--ease) forwards;
   }
 
-  .nav-panel.is-open nav a:nth-child(1) { animation-delay: 0.05s; }
-  .nav-panel.is-open nav a:nth-child(2) { animation-delay: 0.1s; }
-  .nav-panel.is-open nav a:nth-child(3) { animation-delay: 0.15s; }
-  .nav-panel.is-open nav a:nth-child(4) { animation-delay: 0.2s; }
-  .nav-panel.is-open nav a:nth-child(5) { animation-delay: 0.25s; }
+  .nav-kicker {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  .nav-panel.is-open .nav-kicker {
+    animation: menu-link 0.45s var(--ease) 0.08s forwards;
+  }
+
+  .nav-panel.is-open nav a:nth-child(1) { animation-delay: 0.22s; }
+  .nav-panel.is-open nav a:nth-child(2) { animation-delay: 0.32s; }
+  .nav-panel.is-open nav a:nth-child(3) { animation-delay: 0.42s; }
+  .nav-panel.is-open nav a:nth-child(4) { animation-delay: 0.52s; }
+  .nav-panel.is-open nav a:nth-child(5) { animation-delay: 0.62s; }
 
   .nav-panel nav a[aria-current='page'] {
     color: #f3d7b4;
@@ -1715,7 +1843,8 @@ a.day:hover {
 
   .card-grid,
   .facts,
-  .inquiry-form {
+  .inquiry-form,
+  .gather-feature {
     grid-template-columns: 1fr;
   }
 
@@ -1778,9 +1907,20 @@ a.day:hover {
     transition: none !important;
   }
 
-  .js [data-reveal] {
+  .js [data-reveal],
+  .nav-panel nav a,
+  .nav-kicker,
+  .js .content-break .content-break-mark {
     opacity: 1;
     transform: none;
+  }
+
+  .js .content-break {
+    clip-path: none;
+  }
+
+  .js .content-break .content-break-mark {
+    transform: translateX(-50%);
   }
 
   ::view-transition-group(*),

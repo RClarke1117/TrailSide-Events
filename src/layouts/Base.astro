@@ -70,24 +70,28 @@ const jsonLd = {
       }
       function initMotion() {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        document.querySelectorAll('[data-reveal]').forEach((node) => {
-          if (reduce) {
-            node.classList.add('is-in');
-            return;
-          }
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add('is-in');
-                  observer.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.16 },
-          );
-          observer.observe(node);
-        });
+        const watch = (selector: string, threshold: number) => {
+          document.querySelectorAll(selector).forEach((node) => {
+            if (reduce) {
+              node.classList.add('is-in');
+              return;
+            }
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('is-in');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              },
+              { threshold },
+            );
+            observer.observe(node);
+          });
+        };
+        watch('[data-reveal]', 0.16);
+        watch('.content-break', 0.4);
       }
 
       function syncHeader() {
