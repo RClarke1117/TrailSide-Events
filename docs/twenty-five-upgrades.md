@@ -4,7 +4,7 @@ Ranked for TrailSide after this first public site. Effort is the size of the cha
 
 | Rank | Upgrade | Effort | Impact |
 | --- | --- | --- | --- |
-| 1 | Replace placeholder frames with venue photography that has no guests: room, timber, brick, stove, tables, lane, trail. | M | Highest. The first viewport and gallery are waiting on this. |
+| 1 | Add more empty-room details (timber close-up, brick, stove, the trail) beside the photographs already in the gallery. | M | The bar, banquet, set tables, green wall, and lane are in. Detail crops would still help. |
 | 2 | Connect real bookings. Set `source` to `live` or swap `getAvailability` to a Worker. | M | Stops the sample disclaimer and makes “check a date” true. |
 | 3 | Build the owner admin described in `docs/admin-plan.md`, with Cloudflare Access for Jordan and Brandon. | L | The calendar stays current without a developer. |
 | 4 | Turn on `PUBLIC_FORM_ENDPOINT` so inquiries land in trailsidepa@gmail.com without a mail app, and send the guest a plain confirmation. | S | Fewer lost inquiries from blocked mailto. |

@@ -606,6 +606,10 @@ main {
 .frame-g { grid-column: span 6; }
 .frame-h { grid-column: span 12; }
 
+.frame-h .frame-mat {
+  aspect-ratio: 16 / 7;
+}
+
 .frame-mat {
   position: relative;
   aspect-ratio: 4 / 3;
@@ -739,6 +743,15 @@ main {
 
 .record-list li:last-child {
   border-bottom: 1px solid var(--line);
+}
+
+.event-thumb {
+  display: block;
+  width: 7.5rem;
+  height: 5.6rem;
+  object-fit: cover;
+  margin: 0 0 0.75rem;
+  border: 1px solid var(--line);
 }
 
 .record-list h3 {

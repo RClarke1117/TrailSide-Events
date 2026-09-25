@@ -36,6 +36,15 @@ const highlights = [...past, ...undated];
               {upcoming.map((event) => (
                 <li data-reveal>
                   <div>
+                    {event.image && (
+                      <img
+                        class="event-thumb"
+                        src={event.image}
+                        alt={event.imageAlt || ''}
+                        width="120"
+                        height="90"
+                      />
+                    )}
                     <span class="pill">Upcoming</span>
                     <p>{formatEventWhen(event)}</p>
                   </div>

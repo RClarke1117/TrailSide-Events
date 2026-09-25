@@ -2,7 +2,7 @@
 
 Marketing site for [TrailSide Events PA](https://www.facebook.com/trailsideeventspa), a historic wedding and event venue at 201 North Main Lane, Lehighton, Pennsylvania. Designed and built by [Clarke Design Studio](https://clarkedesignstudio.com).
 
-The site is a static Astro build meant for Cloudflare Pages. It tells the story of the house, shows the kinds of gatherings the owners have described publicly, holds a gallery of clearly marked photograph placeholders, lists only verified public dates, and routes every page toward a date inquiry.
+The site is a static Astro build meant for Cloudflare Pages. It tells the story of the house, shows the kinds of gatherings the owners have described publicly, holds photographs of the room, lists only verified public dates, and routes every page toward a date inquiry.
 
 ## Run locally
 
@@ -55,7 +55,7 @@ Display type is Fraunces. Interface and body type is Schibsted Grotesk. The pair
 
 Facts are taken from the owners’ May 2, 2024 Times News interview, the November 22, 2025 Times News report of the Carbon County Chamber award, the chamber listing, and the brief for this project. Prices, guest capacity, hours, unpublished reviews, and upcoming events are not invented. The availability calendar ships with a labeled sample dataset.
 
-Gallery frames are placeholders driven by `data/gallery.json`. Set `image` only for a venue photograph with no people. Public events live in `data/events.json` and are marked upcoming or past from the start date. Photographs are omitted unless they can be confirmed to contain no people. Facebook recommendations are quoted from the public reviews page.
+Gallery frames are driven by `data/gallery.json`. Public events live in `data/events.json` and are marked upcoming or past from the start date. The sports-card sale photograph is a thumbnail on that event only. Facebook recommendations are quoted from the public reviews page.
 
 ## Docs
 

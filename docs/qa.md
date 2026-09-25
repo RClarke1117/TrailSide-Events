@@ -28,7 +28,7 @@ The month grid, sample note, holiday note, legend, and display-only copy live on
 
 ## Facebook content pass
 
-Reviews, gatherings, happenings, gallery labels, and the calendar notes were updated from the public Facebook page. Screenshots in this folder were recaptured after that pass. The sports card sale renders as upcoming. July 4 and the ribbon cutting render as past. Quotes use first names only. Gallery frames still say “Venue photo coming.”
+Reviews, gatherings, happenings, gallery labels, and the calendar notes were updated from the public Facebook page. The sports card sale renders as upcoming, with a small photo of that sale on the listing. July 4 and the ribbon cutting render as past. Quotes use first names only. Gallery frames use photographs of the room. The card-sale photograph is not in the gallery.
 
 ## Fixes during this pass
 

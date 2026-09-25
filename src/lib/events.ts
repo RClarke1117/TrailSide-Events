@@ -9,6 +9,8 @@ export interface PublicEvent {
   hosts: string;
   summary: string;
   source: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 export type EventTiming = 'upcoming' | 'past' | 'undated';
