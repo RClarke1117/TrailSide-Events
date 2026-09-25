@@ -424,6 +424,12 @@ main {
   text-underline-offset: 0.14em;
 }
 
+@media (max-width: 520px) {
+  .mast h1.mast-plain {
+    font-size: 1.22rem;
+  }
+}
+
 .mast h1 em,
 .section-title em {
   font-style: italic;
