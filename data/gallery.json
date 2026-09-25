@@ -12,11 +12,11 @@
     },
     {
       "id": "banquet",
-      "title": "The long table",
+      "title": "A different style",
       "layout": "frame-b",
       "texture": "texture-table",
       "image": "/media/banquet.jpg",
-      "alt": "A long dark wood banquet table set with plates, candles, and flowers, with arched mirrors on the sage wall.",
+      "alt": "The same gathering tables lined up in a straight row, another way to set the room.",
       "credit": "TrailSide Events"
     },
     {
@@ -30,7 +30,7 @@
     },
     {
       "id": "green-wall",
-      "title": "The green wall",
+      "title": "Photo ops",
       "layout": "frame-d",
       "texture": "texture-stove",
       "image": "/media/green-wall.jpg",
