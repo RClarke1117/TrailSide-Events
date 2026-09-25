@@ -1298,7 +1298,7 @@ a.day:hover {
 .site-footer {
   background: var(--ink);
   color: var(--cream);
-  padding: 3.5rem 0 2rem;
+  padding: 2rem 0 1.15rem;
 }
 
 .site-footer a:hover {
@@ -1307,9 +1307,9 @@ a.day:hover {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 2rem;
-  padding-bottom: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  padding-bottom: 1.15rem;
   border-bottom: 1px solid rgba(244, 236, 227, 0.16);
 }
 
@@ -1326,18 +1326,31 @@ a.day:hover {
   color: rgba(244, 236, 227, 0.8);
 }
 
+.fact-logo {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.fact-logo img,
+.footer-logo img {
+  width: auto;
+  object-fit: contain;
+  background: transparent;
+}
+
+.fact-logo img {
+  height: 7.5rem;
+}
+
 .footer-logo {
   display: inline-block;
-  margin-top: 0.6rem;
+  margin-top: 0.25rem;
   text-decoration: none;
 }
 
 .footer-logo img {
-  width: auto;
-  height: 11rem;
-  max-width: 12rem;
-  object-fit: contain;
-  background: transparent;
+  height: 9rem;
+  max-width: 10rem;
 }
 
 .site-footer ul {
@@ -1353,7 +1366,7 @@ a.day:hover {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  padding-top: 1.1rem;
+  padding-top: 0.85rem;
   font-size: 0.85rem;
   color: rgba(244, 236, 227, 0.65);
 }
