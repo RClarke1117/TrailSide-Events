@@ -109,7 +109,7 @@ textarea {
   padding-top: env(safe-area-inset-top);
   display: flex;
   align-items: center;
-  transition: background 0.35s var(--ease), color 0.35s var(--ease), border-color 0.35s var(--ease);
+  transition: background 0.7s var(--ease), color 0.55s var(--ease), border-color 0.7s var(--ease);
   border-bottom: 1px solid transparent;
   color: var(--cream);
   background: var(--paper);
@@ -148,12 +148,32 @@ textarea {
   max-width: 4.2rem;
   object-fit: contain;
   background: transparent;
+  transition: transform 0.7s var(--ease);
+}
+
+.site-header[data-overlay="true"].is-solid .brand img {
+  transform: translateY(3px) scale(0.9);
 }
 
 .nav-desktop {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 1.5rem;
+}
+
+.nav-mark {
+  position: absolute;
+  left: 0;
+  bottom: -0.45rem;
+  height: 2px;
+  width: 1.25rem;
+  background: var(--gold);
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateX(0);
+  transition: transform 0.45s var(--ease), width 0.45s var(--ease), opacity 0.3s var(--ease);
+  pointer-events: none;
 }
 
 .nav-desktop a {
@@ -163,9 +183,7 @@ textarea {
 }
 
 .nav-desktop a[aria-current="page"] {
-  text-decoration: underline;
-  text-decoration-color: var(--gold);
-  text-underline-offset: 0.35em;
+  text-decoration: none;
 }
 
 .nav-toggle {
@@ -233,12 +251,13 @@ textarea {
 
 .hero-photo {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
   object-fit: cover;
   object-position: center 45%;
   border: 0;
+  animation: hero-drift 32s ease-in-out infinite alternate;
 }
 
 .hero-copy {
@@ -309,6 +328,15 @@ textarea {
   font-size: clamp(2.7rem, 4.6vw, 4.1rem);
   line-height: 0.96;
   letter-spacing: -0.02em;
+}
+
+.hero h1 .hero-name,
+.hero h1 em [data-load] {
+  display: inline-block;
+}
+
+.hero h1 .hero-name {
+  display: block;
 }
 
 .hero h1 em {
@@ -1468,10 +1496,17 @@ a.day:hover {
   animation: rise 0.9s var(--ease) both;
 }
 
-[data-load="2"] { animation-delay: 0.12s; }
-[data-load="3"] { animation-delay: 0.24s; }
-[data-load="4"] { animation-delay: 0.38s; }
-[data-load="5"] { animation-delay: 0.52s; }
+[data-load="2"] { animation-delay: 0.22s; }
+[data-load="3"] { animation-delay: 0.5s; }
+[data-load="amp"] { animation-delay: 0.86s; }
+[data-load="4"] { animation-delay: 1.02s; }
+[data-load="5"] { animation-delay: 1.18s; }
+[data-load="6"] { animation-delay: 1.34s; }
+
+@keyframes hero-drift {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to { transform: scale(1.05) translate3d(-1.4%, -0.8%, 0); }
+}
 
 .js [data-reveal] {
   opacity: 0;
@@ -1556,12 +1591,21 @@ a.day:hover {
     position: fixed;
     inset: var(--header-h) 0 0 0;
     background:
-      radial-gradient(ellipse at 100% 0%, rgba(184, 106, 50, 0.35), transparent 46%),
+      radial-gradient(ellipse at 100% 0%, rgba(184, 106, 50, 0.28), transparent 46%),
       var(--forest);
     color: var(--cream);
     z-index: 29;
-    padding: 1.4rem var(--gutter) 2rem;
+    padding: 2.6rem var(--gutter) 2rem;
     overflow: auto;
+  }
+
+  .nav-curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2.4rem;
+    color: #5d7868;
   }
 
   .nav-panel.is-open {
@@ -1571,11 +1615,20 @@ a.day:hover {
   }
 
   .nav-kicker {
-    margin: 0.2rem 0 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0.35rem 0 1.1rem;
     color: #e7c39a;
     font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+  }
+
+  .nav-kicker svg {
+    width: 1.45rem;
+    height: 1.65rem;
+    flex: none;
   }
 
   .nav-panel nav {
