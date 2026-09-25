@@ -16,8 +16,8 @@
   --open: #1f6a45;
   --booked: #7a382c;
   --hold: #8d5a16;
-  --serif: "Newsreader Variable", serif;
-  --sans: "Outfit Variable", sans-serif;
+  --serif: "Instrument Serif", serif;
+  --sans: "Figtree Variable", sans-serif;
   --header-h: 4.75rem;
   --wrap: 1120px;
   --gutter: 1.5rem;
@@ -240,11 +240,29 @@ textarea {
   justify-content: flex-end;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: calc(var(--header-h) + 2rem) 6vw 4.5rem;
+  width: min(34rem, calc(100% - 8vw));
+  padding: calc(var(--header-h) + 1.5rem) 0 3.25rem 6vw;
   position: relative;
   z-index: 1;
-  background: linear-gradient(90deg, rgba(16, 12, 10, 0.82) 0%, rgba(16, 12, 10, 0.55) 42%, rgba(16, 12, 10, 0.12) 72%, rgba(16, 12, 10, 0.28) 100%);
-  max-width: none;
+  background: linear-gradient(180deg, rgba(16, 12, 10, 0) 46%, rgba(16, 12, 10, 0.28) 100%);
+}
+
+.on-photo {
+  -webkit-text-stroke: 0.6px #000;
+  paint-order: stroke fill;
+  text-shadow: 0 0 1px #000;
+}
+
+.hero .eyebrow,
+.hero h1,
+.hero .deck,
+.hero-meta,
+.hero .btn-ghost,
+.site-header[data-overlay="true"]:not(.is-solid) .nav-desktop a,
+.site-header[data-overlay="true"]:not(.is-solid) .nav-toggle {
+  -webkit-text-stroke: 0.6px #000;
+  paint-order: stroke fill;
+  text-shadow: 0 0 1px #000;
 }
 
 .eyebrow {
@@ -258,21 +276,19 @@ textarea {
 .hero h1 {
   margin: 0;
   font-family: var(--serif);
-  font-weight: 560;
-  font-size: clamp(4.6rem, 11vw, 8.5rem);
-  line-height: 0.84;
-  letter-spacing: -0.045em;
-  font-variation-settings: "opsz" 72, "wght" 560;
+  font-weight: 400;
+  font-size: clamp(2.7rem, 4.6vw, 4.1rem);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
 }
 
 .hero h1 em {
   display: block;
   font-style: italic;
-  font-weight: 450;
+  font-weight: 400;
   font-size: 0.62em;
   letter-spacing: -0.03em;
   color: #f0d7b4;
-  font-variation-settings: "opsz" 72, "wght" 480;
 }
 
 .deck {
@@ -367,10 +383,9 @@ main {
 .section-title,
 .block-title {
   font-family: var(--serif);
-  font-weight: 550;
-  letter-spacing: -0.035em;
-  line-height: 0.98;
-  font-variation-settings: "opsz" 72, "wght" 550;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
   margin: 0;
 }
 
@@ -382,8 +397,7 @@ main {
 .mast h1 em,
 .section-title em {
   font-style: italic;
-  font-weight: 460;
-  font-variation-settings: "opsz" 72, "wght" 480;
+  font-weight: 400;
 }
 
 .lede {
@@ -466,9 +480,8 @@ main {
   margin: 0 0 0.3rem;
   font-family: var(--serif);
   font-size: 1.45rem;
-  font-weight: 520;
+  font-weight: 400;
   letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 36, "wght" 520;
 }
 
 .chapter-list p {
@@ -496,10 +509,9 @@ main {
   margin: 0;
   font-family: var(--serif);
   font-size: 1.7rem;
-  font-weight: 520;
-  letter-spacing: -0.03em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   line-height: 1.05;
-  font-variation-settings: "opsz" 48, "wght" 520;
 }
 
 .card p {
@@ -521,11 +533,10 @@ main {
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(1.6rem, 3vw, 2.35rem);
-  font-weight: 480;
+  font-weight: 400;
   font-style: italic;
   line-height: 1.25;
-  letter-spacing: -0.03em;
-  font-variation-settings: "opsz" 48, "wght" 480;
+  letter-spacing: -0.02em;
 }
 
 .quote footer {
@@ -556,9 +567,9 @@ main {
   font-family: var(--serif);
   font-size: clamp(4rem, 8vw, 6.5rem);
   line-height: 0.85;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   margin: 0;
-  font-variation-settings: "opsz" 72, "wght" 520;
+  font-weight: 400;
 }
 
 .stat small {
@@ -758,7 +769,7 @@ main {
   margin: 0 0 0.35rem;
   font-family: var(--serif);
   font-size: 1.6rem;
-  font-weight: 520;
+  font-weight: 400;
   letter-spacing: -0.03em;
 }
 
@@ -810,7 +821,7 @@ main {
   font-family: var(--serif);
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: -0.03em;
-  font-weight: 520;
+  font-weight: 400;
 }
 
 .calendar-layout {
@@ -850,7 +861,7 @@ main {
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 520;
+  font-weight: 400;
   letter-spacing: -0.03em;
 }
 
@@ -1006,7 +1017,7 @@ a.day:hover {
   font-size: 2rem;
   margin: 0 0 0.6rem;
   letter-spacing: -0.03em;
-  font-weight: 520;
+  font-weight: 400;
 }
 
 .calendar-aside p,
@@ -1067,7 +1078,7 @@ a.day:hover {
   font-size: 1.15rem;
   line-height: 1.4;
   letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 24, "wght" 460;
+  font-weight: 400;
 }
 
 .review footer {
@@ -1187,7 +1198,7 @@ a.day:hover {
   margin: 0 0 0.7rem;
   font-family: var(--serif);
   font-size: 1.8rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.03em;
 }
 
@@ -1277,8 +1288,11 @@ a.day:hover {
   }
 
   .hero-copy {
+    width: 100%;
+    padding-right: var(--gutter);
+    padding-left: var(--gutter);
     padding-bottom: 2.5rem;
-    background: linear-gradient(180deg, rgba(16, 12, 10, 0.2) 0%, rgba(16, 12, 10, 0.28) 38%, rgba(16, 12, 10, 0.82) 100%);
+    background: linear-gradient(180deg, rgba(16, 12, 10, 0) 52%, rgba(16, 12, 10, 0.42) 100%);
   }
 }
 
@@ -1380,7 +1394,7 @@ a.day:hover {
   }
 
   .hero h1 {
-    font-size: clamp(3.8rem, 18vw, 5.2rem);
+    font-size: clamp(2.5rem, 11vw, 3.3rem);
   }
 
   .footer-base {

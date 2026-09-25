@@ -1,25 +1,29 @@
 # Typography
 
-TrailSide’s type should feel like a kept historic building: timber, brick, and a set table. The headlines are a book serif. The interface is a plain geometric sans.
+The photograph leads. Type sits back: a sharp serif for titles, and a plain sans for everything a guest reads or fills in.
 
-## Display: Newsreader
+## Display: Instrument Serif
 
-Newsreader is a variable old-style serif (Production Type) with an optical-size axis. At display sizes the contrast is high and the italic is quiet, closer to an invitation than a novelty wordmark. It carries the wordmark, page titles, quotes, and the calendar month.
+Instrument Serif is a single-weight old-style (Rodrigo Fuenzalida, Google Fonts). It is used for the wordmark, page titles, quotes, and the calendar month. The italic is the second line of a headline. There is no softness or wonk axis.
 
-Loaded locally via `@fontsource-variable/newsreader` (`opsz` and `opsz-italic`). Optical size stays inside Newsreader’s 6–72 range. The softness and wonk axes from the previous display face are not used.
+Loaded locally via `@fontsource/instrument-serif` at weight 400, roman and italic.
 
-## Text and UI: Outfit
+## Text and UI: Figtree
 
-Outfit is a geometric sans with an even rhythm. It is the same UI face used on Milk Street Distillery. It carries navigation, forms, captions, and body copy, and it stays clear at small sizes.
+Figtree is the sans used by Clarke Design Studio. It carries navigation, forms, captions, and body copy.
 
-Loaded locally via `@fontsource-variable/outfit`.
+Loaded locally via `@fontsource-variable/figtree`.
 
 ## What was rejected
 
-Fraunces with softness and wonk made the headlines look bubbly. Schibsted Grotesk fought that display face instead of settling next to the photographs. Inter, Jost, Syne, and `system-ui` stay out. System fonts appear only as the CSS generic families `serif` and `sans-serif` behind the real faces, so a failed font file still leaves readable type.
+Fraunces with softness and wonk looked bubbly. Newsreader still felt like a book face sitting on the room. Schibsted Grotesk and Outfit were the previous UI faces. Inter, Jost, Syne, and `system-ui` stay out. System fonts appear only as the CSS generic families `serif` and `sans-serif` behind the real faces.
+
+## Text on photographs
+
+Any type that sits on a photograph gets a 0.6px black stroke so it stays readable without a heavy scrim. That includes the hero headline, deck, and the header while it is still transparent over the room. Type on the cream pages does not get the stroke.
 
 ## Use
 
-- Newsreader for the wordmark, page titles, quotes, and calendar month.
-- Outfit for everything a guest scans or fills in.
-- Uppercase tracking is reserved for eyebrows, captions, and the photograph label. It is not used for long text.
+- Instrument Serif for the wordmark, page titles, quotes, and calendar month.
+- Figtree for everything a guest scans or fills in.
+- The hero title stays in the lower left, small enough that the room remains the picture.
