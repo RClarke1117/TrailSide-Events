@@ -412,11 +412,16 @@ main {
 
 .mast h1.mast-plain {
   font-family: var(--sans);
-  font-size: clamp(1.7rem, 3.4vw, 2.35rem);
+  font-size: clamp(1.55rem, 3.2vw, 2.35rem);
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.45;
   letter-spacing: -0.02em;
   max-width: 22em;
+}
+
+.mast h1.mast-plain a {
+  white-space: nowrap;
+  text-underline-offset: 0.14em;
 }
 
 .mast h1 em,
