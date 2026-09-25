@@ -29,6 +29,15 @@
       "credit": "TrailSide Events"
     },
     {
+      "id": "shower-wall",
+      "title": "Set for a shower",
+      "layout": "frame-d",
+      "texture": "texture-stove",
+      "image": "/media/shower-wall.jpg",
+      "alt": "A baby shower set against the green wall, with a TrailSide Events neon, a clothesline of onesies, letter blocks, and the Lehigh stove.",
+      "credit": "TrailSide Events"
+    },
+    {
       "id": "green-wall",
       "title": "Photo ops",
       "layout": "frame-d",

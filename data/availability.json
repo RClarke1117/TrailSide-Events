@@ -1,92 +1,18 @@
 {
-  "source": "sample",
-  "disclaimer": "Illustrative sample data. These are not real bookings. Availability stays illustrative until Jordan and Brandon connect their calendar.",
+  "source": "live",
+  "disclaimer": "An open day is a request, not a confirmed booking.",
   "updatedAt": "2026-09-25",
   "publicNotes": [],
   "records": [
-    {
-      "date": "2026-10-03",
-      "status": "booked",
-      "note": "SAMPLE — intimate wedding",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-10-04",
-      "status": "booked",
-      "note": "SAMPLE — intimate wedding",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-10-10",
-      "status": "hold",
-      "note": "SAMPLE — date held pending confirmation",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-10-17",
-      "status": "booked",
-      "note": "SAMPLE — birthday celebration",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-10-24",
-      "status": "booked",
-      "note": "SAMPLE — community gathering",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-11-07",
-      "status": "booked",
-      "note": "SAMPLE — bridal shower",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-11-14",
-      "status": "hold",
-      "note": "SAMPLE — date held pending confirmation",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-11-21",
-      "status": "booked",
-      "note": "SAMPLE — private party",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-12-05",
-      "status": "booked",
-      "note": "SAMPLE — performance night",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-12-12",
-      "status": "booked",
-      "note": "SAMPLE — baby shower",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-12-19",
-      "status": "hold",
-      "note": "SAMPLE — date held pending confirmation",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2026-12-31",
-      "status": "booked",
-      "note": "SAMPLE — private celebration",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2027-01-09",
-      "status": "booked",
-      "note": "SAMPLE — conference",
-      "updatedAt": "2026-09-20"
-    },
-    {
-      "date": "2027-01-16",
-      "status": "booked",
-      "note": "SAMPLE — intimate wedding",
-      "updatedAt": "2026-09-20"
-    }
+    { "date": "2026-11-01", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-11-07", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-11-08", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-11-14", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-11-21", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-11-26", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-12-24", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-12-25", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-12-26", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-12-31", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" }
   ]
 }

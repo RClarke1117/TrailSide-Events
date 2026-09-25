@@ -3,19 +3,24 @@ import test from 'node:test';
 import { getAvailability, getAvailabilityMeta, shiftMonth } from '../src/lib/availability.ts';
 import { eventTiming, listEvents } from '../src/lib/events.ts';
 
-test('sample meta stays marked as sample', () => {
+test('posted availability is live, not a sample grid', () => {
   const meta = getAvailabilityMeta();
-  assert.equal(meta.source, 'sample');
-  assert.match(meta.disclaimer, /illustrative/i);
+  assert.equal(meta.source, 'live');
+  assert.match(meta.disclaimer, /request/i);
 });
 
-test('October 2026 expands booked, hold, and open days', async () => {
-  const records = await getAvailability('2026-10');
-  assert.equal(records.length, 31);
-  assert.equal(records.find((record) => record.date === '2026-10-03')?.status, 'booked');
-  assert.equal(records.find((record) => record.date === '2026-10-10')?.status, 'hold');
-  assert.equal(records.find((record) => record.date === '2026-10-01')?.status, 'open');
-  assert.equal(records.every((record) => record.updatedAt), true);
+test('November and December 2026 keep the posted open days', async () => {
+  const november = await getAvailability('2026-11');
+  const december = await getAvailability('2026-12');
+  for (const date of ['2026-11-06', '2026-11-13', '2026-11-15', '2026-11-20', '2026-11-22', '2026-11-27', '2026-11-28', '2026-11-29']) {
+    assert.equal(november.find((record) => record.date === date)?.status, 'open');
+  }
+  assert.equal(november.find((record) => record.date === '2026-11-07')?.status, 'booked');
+  assert.equal(november.find((record) => record.date === '2026-11-02')?.status, 'open');
+  for (const date of ['2026-12-04', '2026-12-05', '2026-12-06', '2026-12-11', '2026-12-12', '2026-12-13', '2026-12-18', '2026-12-19', '2026-12-20', '2026-12-27']) {
+    assert.equal(december.find((record) => record.date === date)?.status, 'open');
+  }
+  assert.equal(december.find((record) => record.date === '2026-12-25')?.status, 'booked');
 });
 
 test('shiftMonth crosses the year', () => {
