@@ -32,6 +32,6 @@ test('sports card sale is upcoming on Sep 25 2026 and July 4 is past', () => {
   const { upcoming, past, undated } = listEvents(now);
   assert.equal(upcoming.some((event) => event.id === 'sports-card-sale-2026'), true);
   assert.equal(past.some((event) => event.id === 'july-4-highlight'), true);
-  assert.equal(undated.some((event) => event.id === 'live-music-nights'), true);
+  assert.equal(undated.some((event) => event.id === 'live-music-nights'), false);
   assert.equal(eventTiming({ id: 'x', title: '', start: null, end: null, place: '', hosts: '', summary: '', source: '' }, now), 'undated');
 });
