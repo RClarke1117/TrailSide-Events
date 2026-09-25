@@ -137,8 +137,9 @@ textarea {
 }
 
 .brand img {
-  width: 3.4rem;
-  height: 3.4rem;
+  height: 3.6rem;
+  width: auto;
+  max-width: 4.2rem;
   object-fit: contain;
   background: transparent;
 }
@@ -239,11 +240,23 @@ textarea {
   justify-content: flex-end;
   min-height: 100vh;
   min-height: 100dvh;
-  width: min(34rem, calc(100% - 8vw));
-  padding: calc(var(--header-h) + 1.5rem) 0 3.25rem 6vw;
+  width: min(36rem, calc(100% - 8vw));
+  padding: calc(var(--header-h) + 1.5rem) 1.5rem 3.25rem 6vw;
   position: relative;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(16, 12, 10, 0) 46%, rgba(16, 12, 10, 0.28) 100%);
+  background: transparent;
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -12%;
+  right: -6%;
+  bottom: -18%;
+  top: 38%;
+  background: radial-gradient(ellipse at 18% 72%, rgba(10, 8, 6, 0.88) 0%, rgba(10, 8, 6, 0.62) 46%, rgba(10, 8, 6, 0) 74%);
+  pointer-events: none;
 }
 
 .on-photo {
@@ -252,11 +265,6 @@ textarea {
   text-shadow: 0 0 1px #000;
 }
 
-.hero .eyebrow,
-.hero h1,
-.hero .deck,
-.hero-meta,
-.hero .btn-ghost,
 .site-header[data-overlay="true"]:not(.is-solid) .nav-desktop a,
 .site-header[data-overlay="true"]:not(.is-solid) .nav-toggle {
   -webkit-text-stroke: 0.6px #000;
@@ -1258,8 +1266,9 @@ a.day:hover {
 }
 
 .footer-logo img {
-  width: 5.5rem;
-  height: 5.5rem;
+  width: auto;
+  height: 6.5rem;
+  max-width: 7rem;
   object-fit: contain;
   background: transparent;
 }
@@ -1349,7 +1358,13 @@ a.day:hover {
     padding-right: var(--gutter);
     padding-left: var(--gutter);
     padding-bottom: 2.5rem;
-    background: linear-gradient(180deg, rgba(16, 12, 10, 0) 52%, rgba(16, 12, 10, 0.42) 100%);
+    background: transparent;
+  }
+
+  .hero-copy::before {
+    left: -20%;
+    right: -10%;
+    top: 28%;
   }
 }
 
