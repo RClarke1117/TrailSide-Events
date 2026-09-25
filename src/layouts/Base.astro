@@ -40,7 +40,8 @@ const jsonLd = {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f8f3ec" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{fullTitle}</title>
@@ -93,7 +94,9 @@ const jsonLd = {
         const header = document.querySelector('[data-header]');
         if (!header) return;
         const overlay = header.getAttribute('data-overlay') === 'true';
-        header.classList.toggle('is-solid', !overlay || window.scrollY > 12);
+        const hero = document.querySelector('.hero');
+        const threshold = hero ? hero.offsetHeight - header.offsetHeight : 12;
+        header.classList.toggle('is-solid', !overlay || window.scrollY > threshold);
       }
 
       if (!window.__trailsideHeader) {
