@@ -38,7 +38,7 @@ export const eventTypes = [
 ] as const;
 
 export const nav = [
-  { href: '/the-house', label: 'The House' },
+  { href: '/the-house', label: 'The Space' },
   { href: '/gatherings', label: 'Gatherings' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/happenings', label: 'Happenings' },

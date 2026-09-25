@@ -289,6 +289,12 @@ textarea {
   color: var(--gold);
 }
 
+.hero .eyebrow {
+  color: #f6efe6;
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+}
+
 .hero h1 {
   margin: 0;
   font-family: var(--serif);
