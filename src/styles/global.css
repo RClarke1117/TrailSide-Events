@@ -1243,9 +1243,14 @@ button.frame-mat {
 }
 
 .empty-state {
-  padding: 2rem;
-  background: var(--cream);
-  border: 1px dashed var(--line-strong);
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.empty-state .content-break {
+  height: 3.5rem;
+  margin-bottom: 1.35rem;
 }
 
 .empty-state h2 {
@@ -1757,10 +1762,25 @@ a.day:hover::after {
 }
 
 .site-footer {
-  background: var(--ink);
+  background: linear-gradient(180deg, #314a3c 0%, #1c2c24 72%);
   color: var(--cream);
-  padding: 2rem 0 calc(1.15rem + env(safe-area-inset-bottom));
-  box-shadow: 0 100vh 0 100vh var(--ink);
+  padding: 0 0 calc(1.15rem + env(safe-area-inset-bottom));
+  box-shadow: 0 100vh 0 100vh #1c2c24;
+}
+
+.site-footer > .content-break {
+  margin-bottom: 1.75rem;
+}
+
+.js .site-footer > .content-break,
+.js .site-footer > .content-break:not(.is-in) {
+  clip-path: none;
+}
+
+.js .site-footer > .content-break .content-break-mark,
+.js .site-footer > .content-break:not(.is-in) .content-break-mark {
+  opacity: 1;
+  transform: translateX(-50%);
 }
 
 .site-footer a:hover {
@@ -1927,6 +1947,41 @@ a.day:hover::after {
 @keyframes month-enter-prev {
   from { opacity: 0; transform: translateX(-12%); }
   to { opacity: 1; transform: none; }
+}
+
+.travel-hex {
+  position: fixed;
+  z-index: 80;
+  left: 50%;
+  top: 46%;
+  width: 2.4rem;
+  height: 2.7rem;
+  color: var(--forest);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  view-transition-name: site-hex;
+}
+
+.travel-hex svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.travel-hex.is-carrying {
+  opacity: 1;
+}
+
+::view-transition-group(site-hex) {
+  z-index: 100;
+  animation-duration: 0.55s;
+}
+
+::view-transition-old(site-hex),
+::view-transition-new(site-hex) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 ::view-transition-old(root) {
@@ -2239,23 +2294,34 @@ a.day:hover::after {
   *::after {
     animation: none !important;
     transition: none !important;
+    scroll-behavior: auto !important;
   }
 
+  [data-load],
   .js [data-reveal],
   .js .frame figcaption,
   .nav-panel nav a,
   .nav-kicker,
-  .js .content-break .content-break-mark {
+  .form-status.is-sent,
+  .js .content-break,
+  .js .content-break:not(.is-in) {
     opacity: 1;
     transform: none;
-  }
-
-  .js .content-break {
     clip-path: none;
   }
 
-  .js .content-break .content-break-mark {
+  .js .content-break .content-break-mark,
+  .js .content-break:not(.is-in) .content-break-mark {
+    opacity: 1;
     transform: translateX(-50%);
+  }
+
+  .hero-photo {
+    transform: none;
+  }
+
+  .travel-hex {
+    display: none;
   }
 
   ::view-transition-group(*),

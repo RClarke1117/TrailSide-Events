@@ -62,6 +62,12 @@ const jsonLd = {
       <slot />
     </main>
     <Footer />
+    <span class="travel-hex" aria-hidden="true">
+      <svg viewBox="0 0 64 72">
+        <path fill="currentColor" d="M32 2.5 60 18.4v35.2L32 69.5 4 53.6V18.4Z"></path>
+        <path fill="#f8f3ec" d="M32 16.5 48 25.6v18.8L32 53.5 16 44.4V25.6Z"></path>
+      </svg>
+    </span>
     <nav class="reach-bar" data-reach aria-label="Reserve" aria-hidden="true" inert>
       <a href="/availability">Check a date</a>
       <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
@@ -92,6 +98,7 @@ const jsonLd = {
       declare global {
         interface Window {
           __trailsideHeader?: boolean;
+          __trailsideCarry?: boolean;
         }
       }
 
@@ -298,6 +305,25 @@ const jsonLd = {
         window.__trailsideHeader = true;
       }
 
+      let carryTimer = 0;
+
+      function carryHex(root: ParentNode | null) {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        root?.querySelector('.travel-hex')?.classList.add('is-carrying');
+      }
+
+      if (!window.__trailsideCarry) {
+        document.addEventListener('astro:before-preparation', () => {
+          window.clearTimeout(carryTimer);
+          carryHex(document);
+        });
+        document.addEventListener('astro:before-swap', (event) => {
+          const next = (event as Event & { newDocument?: Document }).newDocument;
+          carryHex(next ?? null);
+        });
+        window.__trailsideCarry = true;
+      }
+
       document.addEventListener('astro:page-load', () => {
         initMotion();
         syncHeader();
@@ -305,6 +331,10 @@ const jsonLd = {
         initTrail();
         initPrices();
         initViewer();
+        window.clearTimeout(carryTimer);
+        carryTimer = window.setTimeout(() => {
+          document.querySelector('.travel-hex')?.classList.remove('is-carrying');
+        }, 680);
       });
     </script>
   </body>
