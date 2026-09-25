@@ -564,20 +564,14 @@ main {
 }
 
 .band {
-  position: relative;
-  background: var(--forest);
+  background: transparent;
   color: var(--cream);
+  padding-top: 0.5rem;
 }
 
-.band::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -5rem;
-  height: 5rem;
-  background: linear-gradient(180deg, rgba(22, 38, 31, 0) 0%, var(--forest) 100%);
-  pointer-events: none;
+.band .stat-row {
+  background: var(--forest);
+  padding: 2.75rem 2rem;
 }
 
 .band a {
