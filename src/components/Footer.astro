@@ -1,0 +1,43 @@
+---
+import ContentBreak from './ContentBreak.astro';
+import { site } from '../lib/site';
+---
+
+<footer class="site-footer">
+  <ContentBreak rise />
+  <div class="wrap footer-grid">
+    <div>
+      <h2>Visit</h2>
+      <ul>
+        <li><a href={site.maps}>{site.address.line}</a></li>
+        <li>Adjacent to the D&amp;L Trail</li>
+        <li>Across from Dunbar Bottling Co.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <ul>
+        <li><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li class="footer-marks">
+          <a class="footer-logo" href="/" aria-label="TrailSide Events, home">
+            <img src="/brand/logo.png?v=8" alt="" width="220" height="220" />
+          </a>
+          <a class="facebook-mark" href={site.facebook} aria-label="TrailSide Events on Facebook">
+            <svg viewBox="0 0 64 72" aria-hidden="true">
+              <path fill="currentColor" d="M32 2.5 60 18.4v35.2L32 69.5 4 53.6V18.4Z" />
+              <path fill="#1c140f" d="M38.6 27.2h5.2v-5h-5.1c-4.2 0-6.7 2.4-6.7 6.2v3.2h-3.4v5.2h3.4V52h6.2V36.8h4.2l.7-5.2h-4.9v-2.2c0-1.2.6-2.2 2-2.2Z" />
+            </svg>
+          </a>
+        </li>
+        <li><a href="/availability">Availability and booking</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>© {new Date().getFullYear()} {site.name}</p>
+    <p>
+      Website by <a href={site.studio.url}>{site.studio.name}</a>
+    </p>
+  </div>
+</footer>

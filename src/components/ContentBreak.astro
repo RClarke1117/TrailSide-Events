@@ -1,0 +1,25 @@
+---
+interface Props {
+  rise?: boolean;
+}
+
+const { rise = false } = Astro.props;
+---
+
+<div class:list={['content-break', { 'is-rise': rise }]} aria-hidden="true">
+  <svg class="content-break-cut" viewBox="0 0 1440 96" preserveAspectRatio="none">
+    {
+      rise ? (
+        <path fill="#f8f3ec" d="M0 0 C400 0 520 50 720 50 C920 50 1040 0 1440 0 Z" />
+      ) : (
+        <path fill="#f8f3ec" d="M0 96 C400 96 520 46 720 46 C920 46 1040 96 1440 96 Z" />
+      )
+    }
+  </svg>
+  <span class="content-break-mark">
+    <svg viewBox="0 0 64 72" aria-hidden="true">
+      <path fill="currentColor" d="M32 2.5 60 18.4v35.2L32 69.5 4 53.6V18.4Z" />
+      <path fill="#f8f3ec" d="M32 16.5 48 25.6v18.8L32 53.5 16 44.4V25.6Z" />
+    </svg>
+  </span>
+</div>

@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import ContentBreak from '../components/ContentBreak.astro';
+import { site } from '../lib/site';
+---
+
+<Base
+  title="Availability"
+  description="To reserve a date at TrailSide Events PA, call or send an inquiry. An open day is a request, not a booking."
+>
+  <article class="page">
+    <header class="wrap mast">
+      <p class="eyebrow">Availability</p>
+      <h1 class="mast-plain">
+        To reserve a date, call <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a> or <a href="#inquiry">send an inquiry</a>.
+      </h1>
+      <p class="lede">An open day is a request, not a booking. November and December show the remaining holiday and weekend dates. Weekdays are by request.</p>
+    </header>
+    <ContentBreak />
+    <div class="wrap">
+      <AvailabilityCalendar />
+      <ContentBreak rise />
+      <InquiryForm />
+    </div>
+  </article>
+</Base>

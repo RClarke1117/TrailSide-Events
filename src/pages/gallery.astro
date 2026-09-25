@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import PlaceholderFrame from '../components/PlaceholderFrame.astro';
+import NextStep from '../components/NextStep.astro';
+import ContentBreak from '../components/ContentBreak.astro';
+import gallery from '../../data/gallery.json';
+---
+
+<Base
+  title="Gallery"
+  description="Photographs of TrailSide Events PA: the bar room, tables set for a gathering, another way to line them up, photo ops, and the building on North Main Lane."
+>
+  <article class="page">
+    <header class="wrap mast">
+      <p class="eyebrow">Gallery</p>
+      <h1>The house, as it stands.</h1>
+      <p class="lede">
+        The bar room, tables set for a gathering, those tables in a line, photo ops on the green wall, and the building at 201 North Main Lane.
+      </p>
+    </header>
+    <ContentBreak />
+    <div class="wrap gallery-grid">
+      {
+        gallery.frames.map((frame) => (
+          <PlaceholderFrame
+            className={frame.layout}
+            title={frame.title}
+            texture={frame.texture}
+            image={frame.image}
+            alt={frame.alt}
+            credit={frame.credit}
+          />
+        ))
+      }
+    </div>
+    <div class="wrap">
+      <NextStep title="Ask how the room is set." copy="Jordan is the main contact for tours and packages. Hours are by appointment." href="/availability#inquiry" label="Start an inquiry" />
+    </div>
+  </article>
+</Base>

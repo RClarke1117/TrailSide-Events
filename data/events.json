@@ -1,0 +1,58 @@
+{
+  "events": [
+    {
+      "id": "sports-card-sale-2026",
+      "title": "Sports Card & Memorabilia Sale",
+      "start": "2026-09-26T11:00:00-04:00",
+      "end": "2026-09-26T16:00:00-04:00",
+      "place": "201 N Main Ln., Lehighton, PA 18235",
+      "hosts": "Devin Roth",
+      "summary": "Free admission. Buy, sell, and trade sports cards and memorabilia. Door prizes and raffles through the day. Half Barrel Brewing beer for purchase (21+). College football on TV.",
+      "source": "TrailSide Events PA Facebook, public event",
+      "image": "/media/card-sale.jpg",
+      "imageAlt": "Tables of sports cards at the TrailSide memorabilia sale, with a guest in a red Taylor jersey.",
+      "images": [
+        {
+          "src": "/media/card-sale.jpg",
+          "alt": "Tables of sports cards at the TrailSide memorabilia sale, with a guest in a red Taylor jersey."
+        },
+        {
+          "src": "/media/card-sale-bar.jpg",
+          "alt": "A crowded sports card sale along the TrailSide bar, with guests, a stroller, and folded jerseys in front."
+        },
+        {
+          "src": "/media/card-sale-tables.jpg",
+          "alt": "Guests looking through boxes of sports cards spread across tables at TrailSide."
+        },
+        {
+          "src": "/media/card-sale-wall.jpg",
+          "alt": "A vendor beside glass card cases in front of the green wall and TrailSide Events neon."
+        },
+        {
+          "src": "/media/card-sale-room.jpg",
+          "alt": "The card sale filling the room, with tables of boxes under the pendant lights."
+        }
+      ]
+    },
+    {
+      "id": "july-4-highlight",
+      "title": "4th of July at TrailSide",
+      "start": "2026-07-04T17:00:00-04:00",
+      "end": null,
+      "place": "201 N. Main Ln., outdoors",
+      "hosts": "TrailSide Events PA",
+      "summary": "From 5:00 p.m. until fireworks. Food from Shoenberger’s Meat Market. Live music by the 7th & Mahoning duo. Craft beer from Half Barrel Brewing. Cocktails with Eight Oaks and Stateside Spirits.",
+      "source": "Public Facebook graphic. The graphic did not print a year; this site files it as a past highlight."
+    },
+    {
+      "id": "ribbon-cutting-2024",
+      "title": "Grand opening ribbon cutting",
+      "start": "2024-05-02T18:00:00-04:00",
+      "end": "2024-05-02T20:00:00-04:00",
+      "place": "201 North Main Lane, Lehighton",
+      "hosts": "TrailSide Events PA and the Carbon County Chamber",
+      "summary": "6–8 p.m. Bookings opened after this evening.",
+      "source": "Times News, May 2, 2024"
+    }
+  ]
+}

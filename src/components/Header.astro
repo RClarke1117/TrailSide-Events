@@ -1,0 +1,117 @@
+---
+import { nav } from '../lib/site';
+
+interface Props {
+  overlay?: boolean;
+}
+
+const { overlay = false } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="site-header" data-header data-overlay={overlay ? 'true' : 'false'}>
+  <div class="header-inner">
+    <a class="brand" href="/" transition:name="wordmark" aria-label="TrailSide Events, home">
+      <img src="/brand/logo.png?v=8" alt="" width="48" height="48" />
+    </a>
+    <nav class="nav-desktop" aria-label="Primary">
+      <span class="nav-mark" data-nav-mark aria-hidden="true"></span>
+      {
+        nav.map((item) => (
+          <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
+      Menu
+    </button>
+  </div>
+</header>
+<div class="nav-panel" id="nav-panel" hidden>
+  <svg class="nav-curve" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#5d7868" d="M0 36 C420 36 540 8 720 8 C900 8 1020 36 1440 36 V64 H0 Z" />
+  </svg>
+  <p class="nav-kicker">
+    <svg viewBox="0 0 64 72" aria-hidden="true">
+      <path fill="#e7c39a" d="M32 2.5 60 18.4v35.2L32 69.5 4 53.6V18.4Z" />
+      <path fill="#16261f" d="M32 16.5 48 25.6v18.8L32 53.5 16 44.4V25.6Z" />
+    </svg>
+    On the D&amp;L
+  </p>
+  <nav aria-label="Mobile">
+    {
+      nav.map((item) => (
+        <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
+  <p class="nav-foot">
+    <a href="tel:+16108102982">(610) 810-2982</a>
+    <a href="/availability#inquiry">Send an inquiry</a>
+  </p>
+</div>
+<script>
+  function initNavMark() {
+    const nav = document.querySelector('.nav-desktop');
+    const mark = document.querySelector('[data-nav-mark]');
+    if (!(nav instanceof HTMLElement) || !(mark instanceof HTMLElement)) return;
+    const place = (link: Element | null) => {
+      if (!(link instanceof HTMLElement)) {
+        mark.style.opacity = '0';
+        return;
+      }
+      const navBox = nav.getBoundingClientRect();
+      const box = link.getBoundingClientRect();
+      const width = Math.max(18, box.width * 0.42);
+      mark.style.width = `${width}px`;
+      mark.style.transform = `translateX(${box.left - navBox.left + (box.width - width) / 2}px)`;
+      mark.style.opacity = '1';
+    };
+    const current = () => nav.querySelector('[aria-current="page"]');
+    place(current());
+    if (nav.dataset.bound === 'true') return;
+    nav.dataset.bound = 'true';
+    nav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('mouseenter', () => place(link));
+    });
+    nav.addEventListener('mouseleave', () => place(current()));
+    window.addEventListener('resize', () => place(current()));
+  }
+
+  function initNav() {
+    const toggle = document.querySelector('.nav-toggle');
+    const panel = document.querySelector('.nav-panel');
+    if (!(toggle instanceof HTMLButtonElement) || !(panel instanceof HTMLElement)) return;
+    if (toggle.dataset.bound === 'true') {
+      initNavMark();
+      return;
+    }
+    toggle.dataset.bound = 'true';
+    const close = () => {
+      panel.classList.remove('is-open');
+      panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = 'Menu';
+    };
+    close();
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      if (open) {
+        close();
+      } else {
+        panel.hidden = false;
+        panel.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.textContent = 'Close';
+      }
+    });
+    panel.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+    initNavMark();
+  }
+
+  document.addEventListener('astro:page-load', initNav);
+</script>

@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+import NextStep from '../components/NextStep.astro';
+import ContentBreak from '../components/ContentBreak.astro';
+
+const gatherings = [
+  {
+    title: 'Weddings & receptions',
+    type: 'wedding-reception',
+    copy: 'Couples have held the reception here, and one hosted the rehearsal dinner the day before. Guests describe natural industrial beauty, with little décor beyond centerpieces.',
+  },
+  {
+    title: 'Rehearsal dinners',
+    type: 'rehearsal-dinner',
+    copy: 'The same room the night before a wedding. One party was catered by Cindy’s Deli. Catering choices are confirmed with Jordan.',
+  },
+  {
+    title: 'Reunions',
+    type: 'reunion',
+    copy: 'A 10-year high school reunion used the house. Guests called it spacious and easy to reach. How many people fit is confirmed when you inquire.',
+  },
+  {
+    title: 'Showers',
+    type: 'shower',
+    copy: 'Bridal and baby showers were part of the opening description, and the room is the one reviewers call easy to personalize.',
+  },
+  {
+    title: 'Birthdays',
+    type: 'birthday',
+    copy: 'Birthday celebrations have been part of the house since it opened. Packages are available. Ask Jordan what is included.',
+  },
+  {
+    title: 'Holiday & corporate parties',
+    type: 'holiday-party',
+    copy: 'TrailSide has invited holiday parties into the remaining November and December dates. Corporate gatherings use the same room: full-length bar, large gathering areas, owners hands-on.',
+  },
+  {
+    title: 'Community events',
+    type: 'community',
+    copy: 'Public days have included a sports card and memorabilia sale and a 4th of July with food, live music, and fireworks. Those dates are on Happenings.',
+  },
+  {
+    title: 'Live music',
+    type: 'performance',
+    copy: 'The 7th & Mahoning duo has played here. Performance dates are listed only when a start time is published.',
+  },
+];
+---
+
+<Base
+  title="Gatherings"
+  description="Intimate weddings, showers, birthdays, private parties, performances, and community events at TrailSide Events PA in Lehighton."
+>
+  <article class="page">
+    <header class="wrap mast">
+      <p class="eyebrow">Gatherings</p>
+      <h1>What the house is asked to hold.</h1>
+      <p class="lede">
+        A newly renovated, industrial-rustic room in the former distillery, with a full-length bar and large gathering areas. Reviewers say it is easily personalized and needs little décor. Packages are available, and the owners are hands-on — Jordan is the main contact. Bring your own food, drinks, and supplies, or ask about a local caterer. Tables, chairs, a refrigerator and freezer, chafing dishes, and coffee service are in the house. By appointment, contact us for tours and packages.
+      </p>
+    </header>
+
+    <ContentBreak />
+
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <p class="section-kicker">Packages</p>
+        <h2 class="section-title">What the room rents for.</h2>
+        <div class="facts">
+          <div class="fact" data-reveal>
+            <p class="price-num"><span data-price="200">200</span></p>
+            <p>Four-hour weekday, Monday through Thursday.</p>
+          </div>
+          <div class="fact" data-reveal>
+            <p class="price-num"><span data-price="350">350</span></p>
+            <p>Four hours, including setup and tear-down. Extra time is $50 an hour.</p>
+          </div>
+          <div class="fact" data-reveal>
+            <p class="price-num"><span data-price="550">550</span></p>
+            <p>Full day. Parties conclude at 11:00 p.m.</p>
+          </div>
+        </div>
+        <p class="lede">
+          The house is bring-your-own for food, drinks, and supplies. A refrigerator and freezer, a coffee maker with carafes, and chafing dishes are in the room. A $250 security deposit is separate from the rental and is refunded after a walk-through if nothing is damaged. Canceling with less than 7 days’ notice forfeits that refund.
+        </p>
+      </div>
+    </section>
+
+    <ContentBreak rise />
+
+    <div class="wrap card-grid">
+      {
+        gatherings.map((item) => (
+          <article class="card" data-reveal>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+            <a href={`/availability?type=${item.type}#inquiry`}>Inquire about this</a>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="wrap">
+      <div class="facts" style="margin-top: 3rem;">
+        <div class="fact" data-reveal>
+          <h3>BYO</h3>
+          <p>Renters may bring food, drinks, and supplies. That is the owners’ stated concept, not a printed policy manual.</p>
+        </div>
+        <div class="fact" data-reveal>
+          <h3>In the room</h3>
+          <p>Tables, chairs, refrigerator/freezer, chafing dishes, coffee maker and carafes. Anything beyond that list should be asked about.</p>
+        </div>
+        <div class="fact" data-reveal>
+          <h3>Hours &amp; packages</h3>
+          <p>By appointment, contact us for tours and packages. Jordan is the main contact at (610) 810-2982 or trailsidepa@gmail.com.</p>
+        </div>
+      </div>
+      <NextStep title="Match a gathering to a day." copy="Pick an open sample date or send the date you hope for. The owners confirm it." href="/availability" label="Check a date" />
+    </div>
+  </article>
+</Base>

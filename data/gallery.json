@@ -1,0 +1,68 @@
+{
+  "note": "Photographs supplied for the site. The sports-card sale photo is not a gallery frame; it is the thumbnail on that event in data/events.json.",
+  "frames": [
+    {
+      "id": "main-room",
+      "title": "The bar room",
+      "layout": "frame-a",
+      "texture": "texture-room",
+      "image": "/media/hero-interior.jpg",
+      "alt": "The TrailSide room with the full-length bar, timber posts, and tables along the brick wall.",
+      "credit": "TrailSide Events"
+    },
+    {
+      "id": "banquet",
+      "title": "A different style",
+      "layout": "frame-b",
+      "texture": "texture-table",
+      "image": "/media/banquet.jpg",
+      "alt": "The same gathering tables lined up in a straight row, another way to set the room.",
+      "credit": "TrailSide Events"
+    },
+    {
+      "id": "dining",
+      "title": "Set for a gathering",
+      "layout": "frame-c",
+      "texture": "texture-table",
+      "image": "/media/dining-room.jpg",
+      "alt": "Dining tables dressed with runners and dried grasses in the main room, black chairs, timber posts, and brick.",
+      "credit": "TrailSide Events"
+    },
+    {
+      "id": "shower-wall",
+      "title": "Set for a shower",
+      "layout": "frame-d",
+      "texture": "texture-stove",
+      "image": "/media/shower-wall.jpg",
+      "alt": "A baby shower set against the green wall, with a TrailSide Events neon, a clothesline of onesies, letter blocks, and the Lehigh stove.",
+      "credit": "TrailSide Events"
+    },
+    {
+      "id": "green-wall",
+      "title": "Photo ops",
+      "layout": "frame-d",
+      "texture": "texture-stove",
+      "image": "/media/green-wall.jpg",
+      "alt": "The TrailSide Events neon on the green wall, with a clothesline of baby clothes, pumpkins, and the Lehigh stove.",
+      "credit": "TrailSide Events"
+    },
+    {
+      "id": "performance",
+      "title": "The performance wall",
+      "layout": "frame-e",
+      "texture": "texture-evening",
+      "image": "/media/performance-wall.jpg",
+      "alt": "A musician with an acoustic guitar in front of the green wall and TrailSide Events neon, beside the Lehigh stove.",
+      "credit": "TrailSide Events"
+    },
+    {
+      "id": "lane",
+      "title": "North Main Lane",
+      "layout": "frame-h",
+      "texture": "texture-lane",
+      "image": "/media/house-exterior.jpg",
+      "alt": "The TrailSide building at 201 North Main Lane, Lehighton, seen from the street.",
+      "credit": "Terry Ahner / Times News"
+    }
+  ]
+}

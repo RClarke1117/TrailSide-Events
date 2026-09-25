@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import NextStep from '../components/NextStep.astro';
+import ContentBreak from '../components/ContentBreak.astro';
+import { formatEventWhen, listEvents } from '../lib/events';
+import { site } from '../lib/site';
+
+const { upcoming, past, undated } = listEvents();
+const highlights = [...past, ...undated];
+---
+
+<Base
+  title="Happenings"
+  description="Upcoming and past public events at TrailSide Events PA, including the Sports Card & Memorabilia Sale."
+>
+  <article class="page">
+    <header class="wrap mast">
+      <p class="eyebrow">Happenings</p>
+      <h1>What the house is hosting in public.</h1>
+    </header>
+
+    <ContentBreak />
+
+    <div class="wrap">
+      <section class="event-block">
+        <p class="section-kicker">Upcoming</p>
+        <h2 class="section-title">On the calendar</h2>
+        {
+          upcoming.length === 0 ? (
+            <div class="empty-state" data-reveal>
+              <ContentBreak />
+              <h2>Nothing dated ahead.</h2>
+              <p>When Jordan and Brandon add a start date to the events file, it will show here.</p>
+            </div>
+          ) : (
+            <ul class="record-list">
+              {upcoming.map((event) => (
+                <li data-reveal>
+                  <div>
+                    <p>{formatEventWhen(event)}</p>
+                  </div>
+                  <div>
+                    <h3>{event.title}</h3>
+                    <p>{event.summary}</p>
+                    <p>
+                      {event.place}. With {event.hosts}. {event.source}
+                    </p>
+                    <div class="event-tiles">
+                      {(event.images?.length
+                        ? event.images
+                        : event.image
+                          ? [{ src: event.image, alt: event.imageAlt || '' }]
+                          : []
+                      ).map((photo) => (
+                        <button type="button" class="event-tile" data-enlarge={photo.src} data-enlarge-alt={photo.alt}>
+                          <img src={photo.src} alt={photo.alt} width="88" height="88" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </section>
+    </div>
+
+    <ContentBreak rise />
+
+    <div class="wrap">
+      <section class="event-block">
+        <p class="section-kicker">Past</p>
+        <h2 class="section-title">Highlights already kept</h2>
+        <ul class="record-list">
+          {
+            highlights.map((event) => (
+              <li data-reveal>
+                <div>
+                  <p>{formatEventWhen(event)}</p>
+                </div>
+                <div>
+                  <h3>{event.title}</h3>
+                  <p>{event.summary}</p>
+                  <p>
+                    {event.place}. {event.source}
+                  </p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="lede">New public dates are also posted on <a href={site.facebook}>Facebook</a>.</p>
+        <NextStep href="/availability" label="Check a date" />
+      </section>
+    </div>
+  </article>
+</Base>

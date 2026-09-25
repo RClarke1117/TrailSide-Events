@@ -1,0 +1,199 @@
+---
+import { currentMonth, getAvailability, getAvailabilityMeta, monthLabel, todayInLehighton, weekdayIndex } from '../lib/availability';
+
+const month = currentMonth();
+const today = todayInLehighton();
+const records = await getAvailability(month);
+const meta = getAvailabilityMeta();
+const label = monthLabel(month);
+const payload = JSON.stringify({ month, records, source: meta.source });
+---
+
+<section id="calendar" class="calendar-layout" aria-labelledby="calendar-heading">
+  <div class="calendar-panel">
+    <p class="sample-note" data-sample-note>
+      {meta.source === 'sample'
+        ? 'These dates are illustrative until booking is confirmed. An open day here is not a confirmed reservation.'
+        : meta.disclaimer}
+    </p>
+    <div class="calendar-toolbar">
+      <h2 id="calendar-heading">{label}</h2>
+      <div class="month-nav">
+        <button type="button" data-month-nav="-1" aria-label="Previous month">←</button>
+        <button type="button" data-month-nav="1" aria-label="Next month">→</button>
+      </div>
+    </div>
+    <div data-calendar data-state={payload}>
+      <div class="calendar-grid" role="grid" aria-label={label}>
+        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => <div class="dow">{day}</div>)}
+        {Array.from({ length: weekdayIndex(`${month}-01`) }).map(() => <div class="day is-outside" aria-hidden="true"></div>)}
+        {
+          records.map((record) => {
+            const dayNum = Number(record.date.slice(8, 10));
+            const past = record.date < today;
+            const statusLabel = past && record.status === 'open' ? 'Past' : record.status === 'open' ? 'Open' : record.status === 'booked' ? 'Booked' : 'Hold';
+            const open = record.status === 'open' && !past;
+            const inner = (
+              <>
+                <span class="day-num">{dayNum}</span>
+                <span class="day-status">{statusLabel}</span>
+              </>
+            );
+            return open ? (
+              <a class={`day is-${record.status}`} href={`/availability?date=${record.date}#inquiry`}>
+                {inner}
+              </a>
+            ) : (
+              <div class={`day is-${record.status}`} aria-disabled="true">
+                {inner}
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+    <p class="visually-hidden" aria-live="polite" data-calendar-live></p>
+    <ul class="legend">
+      <li><span class="swatch swatch-open"></span> Open to request</li>
+      <li><span class="swatch swatch-booked"></span> Booked</li>
+      <li><span class="swatch swatch-hold"></span> Hold</li>
+    </ul>
+  </div>
+  <aside class="calendar-aside">
+    <h2>Request, not a booking</h2>
+    <p class="reserve-note">
+      To reserve a date, call <a href="tel:+16108102982">(610) 810-2982</a> or send an inquiry to request it. Jordan and Brandon confirm every date. An open day opens the inquiry with that date filled in. Nothing is held or charged.
+    </p>
+    {
+      meta.publicNotes.length > 0 && (
+        <div class="public-notes">
+          {meta.publicNotes.map((note) => (
+            <p>{note}</p>
+          ))}
+        </div>
+      )
+    }
+    <div class="contact-stack">
+      <a href="tel:+16108102982">(610) 810-2982</a>
+      <a href="mailto:trailsidepa@gmail.com">trailsidepa@gmail.com</a>
+      <a href="#inquiry">Send an inquiry</a>
+    </div>
+  </aside>
+</section>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>
+
+<script>
+  import {
+    getAvailability,
+    monthLabel,
+    shiftMonth,
+    todayInLehighton,
+    weekdayIndex,
+    type AvailabilityRecord,
+  } from '../lib/availability';
+
+  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  function renderGrid(month: string, records: AvailabilityRecord[], selected: string, today: string) {
+    const first = weekdayIndex(`${month}-01`);
+    const cells: string[] = [];
+    weekdays.forEach((day) => {
+      cells.push(`<div class="dow" role="columnheader">${day}</div>`);
+    });
+    for (let i = 0; i < first; i += 1) {
+      cells.push('<div class="day is-outside" aria-hidden="true"></div>');
+    }
+    records.forEach((record) => {
+      const dayNum = Number(record.date.slice(8, 10));
+      const past = record.date < today;
+      const classes = ['day', `is-${record.status}`];
+      if (past) classes.push('is-past');
+      if (record.date === today) classes.push('is-today');
+      if (record.date === selected) classes.push('is-selected');
+      const statusLabel = past && record.status === 'open' ? 'Past' : record.status === 'open' ? 'Open' : record.status === 'booked' ? 'Booked' : 'Hold';
+      const note = record.note ? ` ${record.note}` : '';
+      const label = `${monthLabel(month).replace(/\s\d{4}$/, '')} ${dayNum}, ${statusLabel}.${note}`;
+      if (!past && record.status === 'open') {
+        cells.push(
+          `<a class="${classes.join(' ')}" href="/availability?date=${record.date}#inquiry" aria-label="${label}"><span class="day-num">${dayNum}</span><span class="day-status">${statusLabel}</span></a>`,
+        );
+      } else {
+        cells.push(
+          `<div class="${classes.join(' ')}" role="gridcell" aria-label="${label}" aria-disabled="true"><span class="day-num">${dayNum}</span><span class="day-status">${statusLabel}</span></div>`,
+        );
+      }
+    });
+    return `<div class="calendar-grid" role="grid" aria-label="${monthLabel(month)}">${cells.join('')}</div>`;
+  }
+
+  async function initCalendar() {
+    const root = document.querySelector('[data-calendar]');
+    const heading = document.getElementById('calendar-heading');
+    const live = document.querySelector('[data-calendar-live]');
+    if (!(root instanceof HTMLElement) || !(heading instanceof HTMLElement)) return;
+
+    const state = JSON.parse(root.dataset.state || '{}') as {
+      month: string;
+      records: AvailabilityRecord[];
+    };
+    let month = state.month;
+    let records = state.records;
+    const today = todayInLehighton();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (root.dataset.bound === 'true') return;
+    root.dataset.bound = 'true';
+
+    const paint = (direction?: 'next' | 'prev') => {
+      heading.textContent = monthLabel(month);
+      root.innerHTML = renderGrid(month, records, '', today);
+      const grid = root.querySelector('.calendar-grid');
+      if (!reduce && direction && grid) {
+        grid.classList.add(direction === 'next' ? 'is-enter-next' : 'is-enter-prev');
+      }
+    };
+
+    paint();
+
+    let busy = false;
+    document.querySelectorAll('[data-month-nav]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        if (busy) return;
+        busy = true;
+        try {
+          const delta = Number((button as HTMLElement).dataset.monthNav);
+          const direction = delta > 0 ? 'next' : 'prev';
+          const nextMonth = shiftMonth(month, delta);
+          const nextRecords = await getAvailability(nextMonth);
+          const grid = root.querySelector('.calendar-grid');
+          if (!reduce && grid) {
+            grid.classList.add(direction === 'next' ? 'is-leave-next' : 'is-leave-prev');
+            await new Promise((resolve) => window.setTimeout(resolve, 280));
+          }
+          month = nextMonth;
+          records = nextRecords;
+          paint(reduce ? undefined : direction);
+          if (live) live.textContent = monthLabel(month);
+        } finally {
+          busy = false;
+        }
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    void initCalendar();
+  });
+</script>

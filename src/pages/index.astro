@@ -1,0 +1,218 @@
+---
+import Base from '../layouts/Base.astro';
+import PlaceholderFrame from '../components/PlaceholderFrame.astro';
+import NextStep from '../components/NextStep.astro';
+import ContentBreak from '../components/ContentBreak.astro';
+import { site } from '../lib/site';
+import gallery from '../../data/gallery.json';
+import reviewsFile from '../../data/reviews.json';
+---
+
+<Base title={site.shortName} overlay={true}>
+  <section class="hero">
+    <img
+      class="hero-photo"
+      src="/media/hero-interior.jpg"
+      alt="The TrailSide room: timber posts, a full-length bar, and tables along the brick wall."
+    />
+    <div class="hero-copy">
+      <p class="eyebrow" data-load="1">Lehighton, Pennsylvania</p>
+      <h1>
+        <span class="hero-name" data-load="2">TrailSide Events</span>
+        <em><span data-load="3">on the D</span><span class="amp" data-load="amp">&amp;</span><span data-load="3">L.</span></em>
+      </h1>
+      <p class="deck" data-load="4">
+        A historic performance and event house in the former mill building at 201 North Main Lane. Rustic elegance, modern amenities, and celebrations kept personal by {site.owners}.
+      </p>
+      <div class="hero-actions" data-load="5">
+        <a class="btn" href="/availability">Check a date</a>
+        <a class="btn btn-ghost" href="/the-house">The story of the space</a>
+      </div>
+      <div class="hero-meta" data-load="6">
+        <span>2025 Business of the Year</span>
+        <span>Carbon County Chamber</span>
+      </div>
+    </div>
+  </section>
+
+  <ContentBreak />
+
+  <section class="section">
+    <div class="wrap section-head">
+      <div data-reveal>
+        <p class="section-kicker">The space</p>
+        <h2 class="section-title">Four lives, then a place to gather.</h2>
+      </div>
+      <p class="section-copy" data-reveal>
+        Before TrailSide, these walls were the Henry Miller Planing Mill, the City Lumber Company, the Lehigh Stove Co., and Insurrection Distillery. An original stove from the stove works is still in the house. The name comes from the historic D&amp;L Trail next door.
+      </p>
+    </div>
+    <div class="wrap">
+      <ol class="chapter-list">
+        <li data-reveal>
+          <span class="when">1865</span>
+          <div>
+            <h3>Mill and stove works</h3>
+            <p>This building went up in 1865 for Lehigh Stove and Manufacturing, and an original stove is still in the room. Henry Miller’s planing mill on the Flats employed about ten people, and his sons later ran it as Miller Brothers.</p>
+          </div>
+        </li>
+        <li data-reveal>
+          <span class="when">1930s</span>
+          <div>
+            <h3>City Lumber Company</h3>
+            <p>City Lumber Company succeeded the mill operation in the 1930s.</p>
+          </div>
+        </li>
+        <li data-reveal>
+          <span class="when">2019–2023</span>
+          <div>
+            <h3>Insurrection Distillery</h3>
+            <p>Rod Walck and Anthony Serafino opened a grain-to-glass distillery here in fall 2019, with a soft opening on October 26. They made bourbon, vodka, rum, moonshine, and rye until it closed in April 2023.</p>
+          </div>
+        </li>
+        <li data-reveal>
+          <span class="when">May 2, 2024</span>
+          <div>
+            <h3>TrailSide opens</h3>
+            <p>Jordan and Brandon Cummins opened the house with a Carbon County Chamber ribbon cutting from 6 to 8 p.m. The name comes from the D&amp;L Trail next door.</p>
+          </div>
+        </li>
+      </ol>
+      <NextStep title="Read the longer history." copy="The building, the stove, and why the name sits beside the trail." href="/the-house" label="Visit the space" />
+    </div>
+  </section>
+
+  <ContentBreak rise />
+
+  <section class="section">
+    <div class="wrap section-head">
+      <div data-reveal>
+        <p class="section-kicker">Gatherings</p>
+        <h2 class="section-title">Weddings, showers, and nights the town comes in.</h2>
+      </div>
+      <p class="section-copy" data-reveal>
+        Weddings and receptions, rehearsal dinners, reunions, showers, birthdays, holiday and corporate parties, and community days. The renovated distillery room has a full-length bar and large gathering areas, and guests say it needs little décor. Packages are available. Jordan is the main contact. Bring your own food, drinks, and supplies, or ask about a local caterer.
+      </p>
+    </div>
+    <div class="wrap gather-feature">
+      <a class="gather-photo" href="/availability?type=wedding-reception#inquiry" data-reveal>
+        <img src="/media/dining-room.jpg" alt="Tables set in the TrailSide room for a gathering." />
+        <div>
+          <p class="section-kicker">Weddings</p>
+          <h3>Weddings &amp; receptions</h3>
+          <p>Rehearsal dinners and receptions in the same industrial-rustic room. A four-hour weekday is $200, a four-hour event is $350, and a full day is $550.</p>
+          <span>Request a wedding date</span>
+        </div>
+      </a>
+      <div class="gather-list" data-reveal>
+        <a href="/gatherings">
+          <h3>Showers, reunions, parties</h3>
+          <p>Showers, birthdays, reunions, and holiday or corporate parties. Tables, chairs, and coffee service are in the house.</p>
+          <span>See the gatherings</span>
+        </a>
+        <a href="/happenings">
+          <h3>Community &amp; live music</h3>
+          <p>Sports card sales, the 4th of July, and live music nights. The next public date is on Happenings.</p>
+          <span>Public happenings</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ContentBreak />
+
+  <section class="section">
+    <div class="wrap section-head">
+      <div data-reveal>
+        <p class="section-kicker">Gallery</p>
+        <h2 class="section-title">The room, as it is set.</h2>
+      </div>
+    </div>
+    <div class="wrap gallery-grid home-frames">
+      {
+        gallery.frames
+          .filter((frame) => frame.id === 'main-room' || frame.id === 'dining')
+          .map((frame) => (
+            <PlaceholderFrame
+              className={frame.id === 'main-room' ? 'frame-a' : 'frame-b'}
+              title={frame.id === 'main-room' ? 'The bar room' : 'Set for a gathering'}
+              texture={frame.texture}
+              image={frame.image}
+              alt={frame.alt}
+              captionOnly={true}
+            />
+          ))
+      }
+    </div>
+    <div class="wrap">
+      <NextStep title="The rest of the house." copy="Another way to set the tables, photo ops, and the building on North Main Lane." href="/gallery" label="Open the gallery" />
+    </div>
+  </section>
+
+  <ContentBreak rise />
+
+  <section class="section band">
+    <div class="wrap stat-row">
+      <div data-reveal>
+        <p class="section-kicker">From Facebook</p>
+        <p class="stat">100%<small>Nine recommendations are printed below, in the writers’ words. The badge counts all ten.</small></p>
+        <p><a class="review-badge" href={reviewsFile.reviewsUrl}>{reviewsFile.badge}</a></p>
+      </div>
+      <div class="award" data-reveal>
+        <p class="section-kicker">2025</p>
+        <h2 class="section-title">Business of the Year</h2>
+        <p>
+          Named by the Carbon County Chamber &amp; Economic Development Corporation. The chamber described TrailSide as a premier wedding and event venue, citing a commitment to excellence and creating memorable experiences.
+        </p>
+        <p>Reported by Times News, November 22, 2025. The gala was held November 14, 2025.</p>
+      </div>
+    </div>
+  </section>
+
+  <ContentBreak />
+
+  <section class="section">
+    <div class="wrap section-head">
+      <div data-reveal>
+        <p class="section-kicker">In their words</p>
+        <h2 class="section-title">Recommendations, unedited.</h2>
+      </div>
+    </div>
+    <div class="wrap review-grid">
+      {
+        reviewsFile.reviews.slice(0, 3).map((review) => (
+          <blockquote class="review" data-reveal>
+            <p>{review.quote}</p>
+            <footer>{review.occasion ? `${review.name}, ${review.occasion}` : review.name}</footer>
+          </blockquote>
+        ))
+      }
+    </div>
+    <details class="wrap review-more">
+      <summary>See more</summary>
+      <div class="review-grid">
+        {
+          reviewsFile.reviews.slice(3).map((review) => (
+            <blockquote class="review">
+              <p>{review.quote}</p>
+              <footer>{review.occasion ? `${review.name}, ${review.occasion}` : review.name}</footer>
+            </blockquote>
+          ))
+        }
+      </div>
+    </details>
+  </section>
+
+  <ContentBreak rise />
+
+  <section class="section">
+    <div class="wrap">
+      <NextStep
+        title="See which days are next."
+        copy="Call or send an inquiry. An open day is a request, not a booking."
+        href="/availability"
+        label="Availability and booking"
+      />
+    </div>
+  </section>
+</Base>

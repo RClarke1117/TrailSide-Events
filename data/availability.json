@@ -1,0 +1,18 @@
+{
+  "source": "live",
+  "disclaimer": "An open day is a request, not a confirmed booking.",
+  "updatedAt": "2026-09-25",
+  "publicNotes": [],
+  "records": [
+    { "date": "2026-11-01", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-11-07", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-11-08", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-11-14", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-11-21", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-11-26", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-12-24", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-12-25", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-12-26", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" },
+    { "date": "2026-12-31", "status": "booked", "note": "Not on the remaining holiday and weekend list", "updatedAt": "2026-09-25" }
+  ]
+}

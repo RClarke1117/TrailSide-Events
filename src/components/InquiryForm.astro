@@ -1,0 +1,147 @@
+---
+import { eventTypes, formEndpoint, site } from '../lib/site';
+---
+
+<section id="inquiry" class="form-panel" aria-labelledby="inquiry-heading">
+  <h2 id="inquiry-heading">Inquire about a date</h2>
+  <p class="email-line">
+    This inquiry is sent to <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+  <p class="form-intro">
+    Tell Jordan and Brandon what you have in mind. Submitting this form requests a date. It does not reserve the house, place a hold, or take payment.
+  </p>
+  <form class="inquiry-form" data-inquiry data-endpoint={formEndpoint} action="https://formsubmit.co/trailsidepa@gmail.com" method="POST">
+    <label class="field">
+      <span>Name</span>
+      <input name="name" type="text" autocomplete="name" required />
+    </label>
+    <label class="field">
+      <span>Email</span>
+      <input name="email" type="email" autocomplete="email" required />
+    </label>
+    <label class="field">
+      <span>Phone</span>
+      <input name="phone" type="tel" autocomplete="tel" required />
+    </label>
+    <label class="field">
+      <span>Event type</span>
+      <select name="event_type" required>
+        <option value="">Select one</option>
+        {eventTypes.map((type) => <option value={type.value}>{type.label}</option>)}
+      </select>
+    </label>
+    <label class="field">
+      <span>Preferred date</span>
+      <input id="preferred-date" name="preferred_date" type="date" required />
+    </label>
+    <label class="field">
+      <span>Guest count</span>
+      <input name="guest_count" type="number" min="1" inputmode="numeric" placeholder="If you know it" />
+    </label>
+    <label class="field field-wide">
+      <span>Message</span>
+      <textarea name="message" required placeholder="The shape of the day, timing, and anything the house should know."></textarea>
+    </label>
+    <input type="hidden" name="_subject" value="TrailSide date inquiry" />
+    <input type="hidden" name="_template" value="table" />
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_next" value="https://trailside-events.pages.dev/availability?sent=1#inquiry" />
+    <label class="honeypot">
+      Company website
+      <input name="_honey" tabindex="-1" autocomplete="off" />
+    </label>
+    <div class="form-actions">
+      <button class="btn" type="submit">Request this date</button>
+      <a class="btn btn-ghost" href={`tel:${site.phoneTel}`}>Call {site.phoneDisplay}</a>
+    </div>
+    <p class="form-status" role="status" data-form-status></p>
+  </form>
+</section>
+
+<script>
+  import { eventTypes } from '../lib/site';
+  import { site } from '../lib/site';
+
+  const labels = Object.fromEntries(eventTypes.map((type) => [type.value, type.label]));
+
+  function initInquiry() {
+    const form = document.querySelector('[data-inquiry]');
+    if (!(form instanceof HTMLFormElement) || form.dataset.bound === 'true') return;
+    form.dataset.bound = 'true';
+    const status = form.querySelector('[data-form-status]');
+    const params = new URLSearchParams(window.location.search);
+    const date = params.get('date');
+    const type = params.get('type');
+    const dateInput = form.querySelector('#preferred-date');
+    const typeInput = form.querySelector('[name="event_type"]');
+    if (date && dateInput instanceof HTMLInputElement && !dateInput.value) dateInput.value = date;
+    if (type && typeInput instanceof HTMLSelectElement) typeInput.value = type;
+    if (params.get('sent') === '1' && status instanceof HTMLElement) {
+      status.classList.add('is-sent');
+      status.textContent = 'Sent. Jordan and Brandon will reply at the email you gave.';
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const honeypot = form.querySelector('[name="_honey"]');
+      if (honeypot instanceof HTMLInputElement && honeypot.value) return;
+
+      const endpoint = form.dataset.endpoint || '';
+      if (!endpoint) return;
+      if (status instanceof HTMLElement) {
+        status.classList.remove('is-error', 'is-sent');
+        status.textContent = 'Sending…';
+      }
+
+      const data = new FormData(form);
+      const email = String(data.get('email') || '');
+      const payload = {
+        name: String(data.get('name') || ''),
+        email,
+        phone: String(data.get('phone') || ''),
+        event_type: labels[String(data.get('event_type') || '')] || String(data.get('event_type') || ''),
+        preferred_date: String(data.get('preferred_date') || ''),
+        guest_count: String(data.get('guest_count') || ''),
+        message: String(data.get('message') || ''),
+        _subject: 'TrailSide date inquiry',
+        _template: 'table',
+        _captcha: 'false',
+        _replyto: email,
+      };
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json().catch(() => null);
+        const message = String(result?.message || '');
+        if (/activat/i.test(message)) {
+          if (status instanceof HTMLElement) {
+            status.classList.add('is-error');
+            status.textContent = `Almost. Open the one-time activation email at ${site.email}, confirm it, and submit this form again.`;
+          }
+          return;
+        }
+        if (!response.ok || result?.success === false || result?.success === 'false') {
+          throw new Error(message || 'Request failed');
+        }
+        form.reset();
+        if (status instanceof HTMLElement) {
+          status.classList.add('is-sent');
+          status.textContent = 'Sent. Jordan and Brandon will reply at the email you gave.';
+        }
+      } catch {
+        if (status instanceof HTMLElement) {
+          status.classList.remove('is-sent');
+          status.classList.add('is-error');
+          status.textContent = `This did not send. Call ${site.phoneDisplay} or email ${site.email}.`;
+        }
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', initInquiry);
+</script>

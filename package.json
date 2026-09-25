@@ -1,0 +1,23 @@
+{
+  "name": "trailside-events",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marketing site for TrailSide Events PA, a historic wedding and event venue in Lehighton, Pennsylvania.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "node --experimental-strip-types --test tests/availability.test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RClarke1117/TrailSide-Events.git"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource-variable/outfit": "^5.3.0",
+    "astro": "^5.18.2"
+  }
+}
