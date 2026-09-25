@@ -1273,6 +1273,18 @@ a.day:hover {
   color: rgba(244, 236, 227, 0.8);
 }
 
+.facebook-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 560;
+  text-decoration: none;
+}
+
+.facebook-link svg {
+  display: block;
+}
+
 .footer-logo {
   display: inline-block;
   margin-top: 0.35rem;
