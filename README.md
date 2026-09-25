@@ -21,7 +21,7 @@ npm run build     # static site in dist/
 npm run preview   # serve the production build
 ```
 
-Copy `.env.example` to `.env` if you want the inquiry form to POST to Formspree or a Worker. With `PUBLIC_FORM_ENDPOINT` empty, the form opens a `mailto:` to trailsidepa@gmail.com.
+The inquiry form POSTs to FormSubmit for trailsidepa@gmail.com. Copy `.env.example` to `.env` only if you want `PUBLIC_FORM_ENDPOINT` to replace that URL.
 
 ## Deploy to Cloudflare Pages
 

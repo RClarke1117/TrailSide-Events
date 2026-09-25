@@ -1,18 +1,18 @@
 # Inquiry form
 
-The form lives on `/inquire` and asks for name, email, phone, event type, preferred date, guest count, and a message. `trailsidepa@gmail.com` is printed on the form. Submitting requests a date. It does not reserve, hold, or charge.
+The form lives on `/availability` and asks for name, email, phone, event type, preferred date, guest count, and a message. `trailsidepa@gmail.com` is printed on the form. Submitting requests a date. It does not reserve, hold, or charge, and it does not open the visitor’s email app.
 
-## Mailto fallback
+## Delivery
 
-If `PUBLIC_FORM_ENDPOINT` is unset, submit opens the visitor’s email app:
+Submit POSTs the fields as JSON to FormSubmit:
 
-`mailto:trailsidepa@gmail.com`
+`https://formsubmit.co/ajax/trailsidepa@gmail.com`
 
-The subject is “TrailSide date inquiry”. The body includes every field. A status line tells the visitor to send the same details manually if the mail app does not open.
+The subject is “TrailSide date inquiry”. Reply-to is the email the guest typed. The first time this address is used, FormSubmit emails `trailsidepa@gmail.com` a single activation link. After that link is clicked, later inquiries arrive in the inbox on their own.
 
 ## Pluggable endpoint
 
-Set `PUBLIC_FORM_ENDPOINT` in `.env` locally and in the Cloudflare Pages project for production. The form then `POST`s `multipart/form-data` with an `Accept: application/json` header. Field names:
+Leave `PUBLIC_FORM_ENDPOINT` empty to keep FormSubmit. Set it only to replace that URL. The script `POST`s JSON with an `Accept: application/json` header. Field names:
 
 | Name | Notes |
 | --- | --- |
@@ -24,7 +24,7 @@ Set `PUBLIC_FORM_ENDPOINT` in `.env` locally and in the Cloudflare Pages project
 | `guest_count` | Optional |
 | `message` | Required |
 | `_subject` | Added by the script: “TrailSide date inquiry” |
-| `company_website` | Honeypot. Leave it empty. |
+| `_honey` | Honeypot. Leave it empty. |
 
 ### Formspree
 
@@ -34,6 +34,6 @@ Set `PUBLIC_FORM_ENDPOINT` in `.env` locally and in the Cloudflare Pages project
 
 ### Cloudflare Worker
 
-Point `PUBLIC_FORM_ENDPOINT` at a Worker route you control, for example `https://trailside.example/api/inquiry`. The Worker should accept the same field names, forward them to `trailsidepa@gmail.com`, and return a 2xx JSON body. If the endpoint fails, the page falls back to the mailto link.
+Point `PUBLIC_FORM_ENDPOINT` at a Worker route you control, for example `https://trailside.example/api/inquiry`. The Worker should accept the same field names, forward them to `trailsidepa@gmail.com`, and return a 2xx JSON body. If the endpoint fails, the page says so and leaves the form filled in.
 
 Do not commit a live form URL that contains a secret. Formspree form IDs are public by design; email API tokens are not, and belong on the Worker, not in this static site.

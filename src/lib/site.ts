@@ -45,4 +45,6 @@ export const nav = [
   { href: '/availability', label: 'Availability and booking' },
 ] as const;
 
-export const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT?.trim() || '';
+export const formEndpoint =
+  import.meta.env.PUBLIC_FORM_ENDPOINT?.trim() ||
+  'https://formsubmit.co/ajax/trailsidepa@gmail.com';
