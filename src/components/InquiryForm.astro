@@ -10,7 +10,7 @@ import { eventTypes, formEndpoint, site } from '../lib/site';
   <p class="form-intro">
     Tell Jordan and Brandon what you have in mind. Submitting this form requests a date. It does not reserve the house, place a hold, or take payment.
   </p>
-  <form class="inquiry-form" data-inquiry data-endpoint={formEndpoint} novalidate>
+  <form class="inquiry-form" data-inquiry data-endpoint={formEndpoint} action={`mailto:${site.email}`} method="post" enctype="text/plain" novalidate>
     <label class="field">
       <span>Name</span>
       <input name="name" type="text" autocomplete="name" required />
@@ -97,10 +97,10 @@ import { eventTypes, formEndpoint, site } from '../lib/site';
 
       const endpoint = form.dataset.endpoint || '';
       if (!endpoint) {
-        window.location.href = buildMailto(form);
         if (status) {
           status.textContent = `Your email app should open with this inquiry addressed to ${site.email}. If it does not, send the same details there yourself.`;
         }
+        window.location.href = buildMailto(form);
         return;
       }
 
