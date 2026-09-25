@@ -16,9 +16,6 @@ const highlights = [...past, ...undated];
     <header class="wrap mast">
       <p class="eyebrow">Happenings</p>
       <h1>What the house is hosting in public.</h1>
-      <p class="lede">
-        Dates come from <code>data/events.json</code>. A start date on or after today in Lehighton is upcoming. An earlier start date is past. An event with no date stays a highlight, not a coming night.
-      </p>
     </header>
 
     <div class="wrap">
@@ -45,7 +42,6 @@ const highlights = [...past, ...undated];
                         height="90"
                       />
                     )}
-                    <span class="pill">Upcoming</span>
                     <p>{formatEventWhen(event)}</p>
                   </div>
                   <div>
@@ -70,7 +66,6 @@ const highlights = [...past, ...undated];
             highlights.map((event) => (
               <li data-reveal>
                 <div>
-                  <span class="pill">Past</span>
                   <p>{formatEventWhen(event)}</p>
                 </div>
                 <div>
