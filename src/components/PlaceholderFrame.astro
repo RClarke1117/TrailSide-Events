@@ -14,16 +14,18 @@ const photo = image.trim();
 ---
 
 <figure class:list={['frame', className]} data-reveal>
-  <div class="frame-mat">
-    {
-      photo ? (
-        <img src={photo} alt={alt || title} />
-      ) : (
+  {
+    photo ? (
+      <button type="button" class="frame-mat" data-enlarge={photo} data-enlarge-alt={alt || title} aria-label={alt || title}>
+        <img src={photo} alt="" />
+      </button>
+    ) : (
+      <div class="frame-mat">
         <div class:list={['texture', texture]}></div>
-      )
-    }
-    {!photo && <p class="placeholder-label">Venue photo coming</p>}
-  </div>
+        <p class="placeholder-label">Venue photo coming</p>
+      </div>
+    )
+  }
   <figcaption>
     <strong>{title}</strong>
     {!captionOnly && <span>{photo ? credit || 'Venue' : 'Venue photo coming'}</span>}

@@ -94,32 +94,4 @@ const highlights = [...past, ...undated];
       </section>
     </div>
   </article>
-  <dialog class="photo-lightbox">
-    <button type="button" class="lightbox-close" data-close>Close</button>
-    <img alt="" />
-  </dialog>
-  <script>
-    function initLightbox() {
-      const dialog = document.querySelector('.photo-lightbox');
-      const image = dialog?.querySelector('img');
-      if (!(dialog instanceof HTMLDialogElement) || !(image instanceof HTMLImageElement)) return;
-      document.querySelectorAll('[data-enlarge]').forEach((button) => {
-        if (!(button instanceof HTMLButtonElement) || button.dataset.bound === 'true') return;
-        button.dataset.bound = 'true';
-        button.addEventListener('click', () => {
-          image.src = button.dataset.enlarge || '';
-          image.alt = button.dataset.enlargeAlt || '';
-          dialog.showModal();
-        });
-      });
-      if (dialog.dataset.bound !== 'true') {
-        dialog.dataset.bound = 'true';
-        dialog.querySelector('[data-close]')?.addEventListener('click', () => dialog.close());
-        dialog.addEventListener('click', (event) => {
-          if (event.target === dialog) dialog.close();
-        });
-      }
-    }
-    document.addEventListener('astro:page-load', initLightbox);
-  </script>
 </Base>
