@@ -25,11 +25,23 @@ Copy `.env.example` to `.env` if you want the inquiry form to POST to Formspree 
 
 ## Deploy to Cloudflare Pages
 
-1. Connect this repository.
-2. Build command: `npm run build`
-3. Build output directory: `dist`
-4. Environment variable (optional): `PUBLIC_FORM_ENDPOINT` — see [docs/forms.md](docs/forms.md).
-5. Set `site` in `astro.config.mjs` once the production domain is chosen. It is intentionally unset so the project does not invent a URL.
+The current production site is [https://trailside-events.pages.dev](https://trailside-events.pages.dev), project `trailside-events` on the Clarke Pages account (direct upload, same pattern as Milk Street Distillery).
+
+To publish a new build:
+
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name trailside-events --branch main
+```
+
+`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` must be set for that command. Wrangler is not a project dependency; `npx wrangler` is enough.
+
+Git-connected deploys use the same project:
+
+1. Build command: `npm run build`
+2. Build output directory: `dist`
+3. Environment variable (optional): `PUBLIC_FORM_ENDPOINT` — see [docs/forms.md](docs/forms.md). `PUBLIC_` values are inlined at build time.
+4. Set `site` in `astro.config.mjs` to `https://trailside-events.pages.dev`, or to the custom domain once one is attached.
 
 `public/_headers` ships security headers Pages will apply.
 
