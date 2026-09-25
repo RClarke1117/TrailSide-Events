@@ -40,7 +40,7 @@ const payload = JSON.stringify({ month, records, source: meta.source });
               </>
             );
             return open ? (
-              <a class={`day is-${record.status}`} href={`/inquire?date=${record.date}#inquiry`}>
+              <a class={`day is-${record.status}`} href={`/availability?date=${record.date}#inquiry`}>
                 {inner}
               </a>
             ) : (
@@ -76,7 +76,7 @@ const payload = JSON.stringify({ month, records, source: meta.source });
     <div class="contact-stack">
       <a href="tel:+16108102982">(610) 810-2982</a>
       <a href="mailto:trailsidepa@gmail.com">trailsidepa@gmail.com</a>
-      <a href="/inquire">Send an inquiry</a>
+      <a href="#inquiry">Send an inquiry</a>
     </div>
   </aside>
 </section>
@@ -127,7 +127,7 @@ const payload = JSON.stringify({ month, records, source: meta.source });
       const label = `${monthLabel(month).replace(/\s\d{4}$/, '')} ${dayNum}, ${statusLabel}.${note}`;
       if (!past && record.status === 'open') {
         cells.push(
-          `<a class="${classes.join(' ')}" href="/inquire?date=${record.date}#inquiry" aria-label="${label}"><span class="day-num">${dayNum}</span><span class="day-status">${statusLabel}</span></a>`,
+          `<a class="${classes.join(' ')}" href="/availability?date=${record.date}#inquiry" aria-label="${label}"><span class="day-num">${dayNum}</span><span class="day-status">${statusLabel}</span></a>`,
         );
       } else {
         cells.push(

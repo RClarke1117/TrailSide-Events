@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
-import NextStep from '../components/NextStep.astro';
+import InquiryForm from '../components/InquiryForm.astro';
 import { site } from '../lib/site';
 ---
 
@@ -13,18 +13,13 @@ import { site } from '../lib/site';
     <header class="wrap mast">
       <p class="eyebrow">Availability</p>
       <h1 class="mast-plain">
-        To reserve a date, call <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a> or <a href="/inquire">send an inquiry</a>.
+        To reserve a date, call <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a> or <a href="#inquiry">send an inquiry</a>.
       </h1>
       <p class="lede">An open day is a request, not a booking. November and December show the remaining holiday and weekend dates. Weekdays are by request.</p>
     </header>
     <div class="wrap">
       <AvailabilityCalendar />
-      <NextStep
-        title="Prefer to write first?"
-        copy="The inquiry form is the same request, with or without a date chosen here."
-        href="/inquire"
-        label="Send an inquiry"
-      />
+      <InquiryForm />
     </div>
   </article>
 </Base>

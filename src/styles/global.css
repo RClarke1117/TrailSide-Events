@@ -939,6 +939,10 @@ main {
   align-items: start;
 }
 
+.calendar-layout + .form-panel {
+  margin-top: 2rem;
+}
+
 .calendar-panel,
 .calendar-aside,
 .form-panel {
